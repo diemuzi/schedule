@@ -1,0 +1,11 @@
+-r common.txt
+
+# Django Modules
+django-debug-toolbar
+django-extensions
+
+# Other Modules
+markdown
+setuptools
+twine
+wheel

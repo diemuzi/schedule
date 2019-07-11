@@ -1,0 +1,95 @@
+/**
+ * Custom Font (Google API)
+ */
+@font-face {
+    font-family: 'Open Sans', sans-serif;
+    src: url(../google-font/Open_Sans/OpenSans-Regular.ttf);
+    font-weight: normal;
+}
+
+/**
+ * Set Font
+ */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/**
+ * Link Manipulation
+ */
+a {
+    color: #4B598A;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a.nounderline {
+    text-decoration: none;
+}
+
+/**
+ * Required * in Forms
+ */
+.required span:after, .required label:after {
+    content: "*";
+    color: #FF0000;
+    font-size: 20px;
+    line-height: 22px;
+    vertical-align: middle;
+    padding-left: 5px;
+}
+
+/**
+ * Space Action Icons Apart
+ */
+th.lastAction:last-child {
+    padding-left: 25px;
+}
+
+/**
+ * When not using form inputs
+ * Label on top and text below
+ */
+div.labelHeader {
+    text-align: left;
+    font-weight: bold;
+    font-size: inherit;
+    color: #000000;
+    line-height: inherit;
+}
+
+div.labelWrapper:nth-last-child(n+2) {
+    padding-bottom: 20px;
+}
+
+/**
+ * Tabs to List
+ */
+@media screen and (max-width: 768px) {
+    .nav {
+        padding-left: 2px;
+        padding-right: 2px;
+        border: none;
+    }
+
+    .nav li {
+        display: block !important;
+        width: 100%;
+        margin: 0;
+    }
+
+    .nav a.active {
+        border-bottom: 1px solid #ddd !important;
+        border-radius: 5px;
+        margin: 0;
+    }
+
+    .nav a:hover {
+        border-bottom: 1px solid #ddd !important;
+        border-radius: 5px;
+        margin: 0;
+    }
+}

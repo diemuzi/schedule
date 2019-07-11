@@ -1,0 +1,15 @@
+dist: xenial
+
+language: python
+
+python:
+  - "3.7"
+
+install:
+  - pip install -r diemuzi/schedule/requirements/tests.txt
+
+script:
+  - coverage run --source='.' schedule/manage.py test
+
+after_success:
+  - coveralls

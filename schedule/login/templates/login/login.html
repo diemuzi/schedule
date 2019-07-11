@@ -1,0 +1,37 @@
+{% extends 'login/layout.html' %}
+
+{% load compress %}
+
+{% load static %}
+
+{% block js %}
+    {% compress js %}
+        <script src="{% static 'form/js/password.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-lg-4 ml-auto mr-auto pt-5">
+        <form action="{% url 'login:login' %}" method="post" novalidate>
+
+            {% csrf_token %}
+
+            <div class="card mb-3">
+                <div class="card-header">{{ _('Login') }}</div>
+
+                <div class="card-body"
+                     id="pwd-container">
+                    {% include 'form/input.html' with input=form.username is_required=True %}
+                    {% include 'form/input.html' with input=form.password is_required=True %}
+                </div>
+
+                <div class="card-footer bg-transparent border-0">
+                    {% include 'form/submit_login.html' %}
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}

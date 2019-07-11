@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'employee:search' %}"><i class="far fa-calendar-alt"></i> {{ _('Schedule') }}</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavBarTop"
+            aria-controls="NavBarTop" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-align-justify"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="NavBarTop">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login:logout' %}">
+                    <i class="fas fa-sign-out-alt fa-fw"></i> {{ _('Logout') }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

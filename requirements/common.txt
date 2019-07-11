@@ -1,0 +1,17 @@
+# Django Modules
+django
+django-compressor
+django-filter
+django-model-utils
+django-split-settings
+django-widget-tweaks
+
+# Other Modules
+psycopg2-binary
+python-dateutil
+python-memcached
+pytz
+pyyaml
+requests
+validators
+xlsxwriter

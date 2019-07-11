@@ -1,0 +1,208 @@
+{% extends 'asset/layout.html' %}
+
+{% load compress %}
+
+{% load static %}
+
+{% block js %}
+    {% compress js %}
+        <script src="{% static 'roster/js/edit.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
+
+{% block content %}
+
+    {% include 'roster/nav.html' with pk=object.pk %}
+
+    <form action="{% url 'roster:edit' object.pk %}" method="post" novalidate>
+
+        {% csrf_token %}
+
+        <div class="card-deck mb-3">
+            <div class="card">
+                <div class="card-header">{{ _('Schedule') }}</div>
+
+                <div class="card-body">
+                    <div class="labelWrapper">
+                        <div class="labelHeader">{{ _('Employee') }}</div>
+                        <div>{{ object.account|escape }}</div>
+                    </div>
+
+                    <div class="labelWrapper">
+                        <div class="labelHeader">{{ _('Facility') }}</div>
+                        <div>{{ object.account.facility|escape|upper }}</div>
+                    </div>
+
+                    <div class="labelWrapper">
+                        <div class="labelHeader">{{ _('Total Time') }}</div>
+                        <div><span id="total_time"></span></div>
+                    </div>
+
+                    <div class="card-text bg-transparent border-0">
+                        {% include 'form/submit_update.html' %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    {% include 'form/checkbox.html' with checkbox=form.is_sunday %}
+
+                    <p class="card-text">
+                        <span class="font-weight-bold pb-5">{{ _('Counter') }}</span>
+
+                        {% include 'form/input.html' with input=form.sunday_start_time_counter %}
+                        {% include 'form/input.html' with input=form.sunday_end_time_counter %}
+                    </p>
+
+                    <p class="card-text">
+                        <span class="font-weight-bold">{{ _('Outside') }}</span>
+
+                        {% include 'form/input.html' with input=form.sunday_start_time_outside %}
+                        {% include 'form/input.html' with input=form.sunday_end_time_outside %}
+                    </p>
+
+                    <p class="card-text">{{ _('Hours') }}: <span id="sunday_total"></span></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    {% include 'form/checkbox.html' with checkbox=form.is_monday %}
+
+                    <p class="card-text">
+                        <span class="font-weight-bold pb-5">{{ _('Counter') }}</span>
+
+                        {% include 'form/input.html' with input=form.monday_start_time_counter %}
+                        {% include 'form/input.html' with input=form.monday_end_time_counter %}
+                    </p>
+
+                    <p class="card-text">
+                        <span class="font-weight-bold">{{ _('Outside') }}</span>
+
+                        {% include 'form/input.html' with input=form.monday_start_time_outside %}
+                        {% include 'form/input.html' with input=form.monday_end_time_outside %}
+                    </p>
+
+                    <p class="card-text">{{ _('Hours') }}: <span id="monday_total"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-deck mb-3">
+            <div class="card">
+                <div class="card-body">
+                    {% include 'form/checkbox.html' with checkbox=form.is_tuesday %}
+
+                    <p class="card-text">
+                        <span class="font-weight-bold pb-5">{{ _('Counter') }}</span>
+
+                        {% include 'form/input.html' with input=form.tuesday_start_time_counter %}
+                        {% include 'form/input.html' with input=form.tuesday_end_time_counter %}
+                    </p>
+
+                    <p class="card-text">
+                        <span class="font-weight-bold">{{ _('Outside') }}</span>
+
+                        {% include 'form/input.html' with input=form.tuesday_start_time_outside %}
+                        {% include 'form/input.html' with input=form.tuesday_end_time_outside %}
+                    </p>
+
+                    <p class="card-text">{{ _('Hours') }}: <span id="tuesday_total"></span></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    {% include 'form/checkbox.html' with checkbox=form.is_wednesday %}
+
+                    <p class="card-text">
+                        <span class="font-weight-bold pb-5">{{ _('Counter') }}</span>
+
+                        {% include 'form/input.html' with input=form.wednesday_start_time_counter %}
+                        {% include 'form/input.html' with input=form.wednesday_end_time_counter %}
+                    </p>
+
+                    <p class="card-text">
+                        <span class="font-weight-bold">{{ _('Outside') }}</span>
+
+                        {% include 'form/input.html' with input=form.wednesday_start_time_outside %}
+                        {% include 'form/input.html' with input=form.wednesday_end_time_outside %}
+                    </p>
+
+                    <p class="card-text">{{ _('Hours') }}: <span id="wednesday_total"></span></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    {% include 'form/checkbox.html' with checkbox=form.is_thursday %}
+
+                    <p class="card-text">
+                        <span class="font-weight-bold pb-5">{{ _('Counter') }}</span>
+
+                        {% include 'form/input.html' with input=form.thursday_start_time_counter %}
+                        {% include 'form/input.html' with input=form.thursday_end_time_counter %}
+                    </p>
+
+                    <p class="card-text">
+                        <span class="font-weight-bold">{{ _('Outside') }}</span>
+
+                        {% include 'form/input.html' with input=form.thursday_start_time_outside %}
+                        {% include 'form/input.html' with input=form.thursday_end_time_outside %}
+                    </p>
+
+                    <p class="card-text">{{ _('Hours') }}: <span id="thursday_total"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-deck mb-3">
+            <div class="card">
+                <div class="card-body">
+                    {% include 'form/checkbox.html' with checkbox=form.is_friday %}
+
+                    <p class="card-text">
+                        <span class="font-weight-bold pb-5">{{ _('Counter') }}</span>
+
+                        {% include 'form/input.html' with input=form.friday_start_time_counter %}
+                        {% include 'form/input.html' with input=form.friday_end_time_counter %}
+                    </p>
+
+                    <p class="card-text">
+                        <span class="font-weight-bold">{{ _('Outside') }}</span>
+
+                        {% include 'form/input.html' with input=form.friday_start_time_outside %}
+                        {% include 'form/input.html' with input=form.friday_end_time_outside %}
+                    </p>
+
+                    <p class="card-text">{{ _('Hours') }}: <span id="friday_total"></span></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    {% include 'form/checkbox.html' with checkbox=form.is_saturday %}
+
+                    <p class="card-text">
+                        <span class="font-weight-bold pb-5">{{ _('Counter') }}</span>
+
+                        {% include 'form/input.html' with input=form.saturday_start_time_counter %}
+                        {% include 'form/input.html' with input=form.saturday_end_time_counter %}
+                    </p>
+
+                    <p class="card-text">
+                        <span class="font-weight-bold">{{ _('Outside') }}</span>
+
+                        {% include 'form/input.html' with input=form.saturday_start_time_outside %}
+                        {% include 'form/input.html' with input=form.saturday_end_time_outside %}
+                    </p>
+
+                    <p class="card-text">{{ _('Hours') }}: <span id="saturday_total"></span></p>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+{% endblock content %}
