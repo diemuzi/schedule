@@ -25,27 +25,40 @@ $(function () {
 
         $.each(day_array, function (index, value) {
             let total_day_time = 0;
-            let is_checked = $('#id_is_' + value).is(':checked');
+            let day_is_checked = $('#id_is_' + value).is(':checked');
+            let break_is_checked = $('#id_has_break_' + value).is(':checked');
             let day_value = $('#' + value + '_total');
             let time_counter = convertTime($('input#id_' + value + '_start_time_counter'), $('input#id_' + value + '_end_time_counter'));
             let time_outside = convertTime($('input#id_' + value + '_start_time_outside'), $('input#id_' + value + '_end_time_outside'));
 
-            if (time_counter !== null && is_checked) {
-                total_time += time_counter
+            if (time_counter !== null && day_is_checked) {
+                total_time += time_counter;
             }
 
             total_day_time += time_counter;
 
-            if (time_outside !== null && is_checked) {
-                total_time += time_outside
+            if (time_outside !== null && day_is_checked) {
+                total_time += time_outside;
             }
 
             total_day_time += time_outside;
 
-            if (total_day_time > 0) {
-                day_value.text(total_day_time);
+            if (day_is_checked && break_is_checked) {
+                total_time -= .5;
+            }
+
+            if (break_is_checked) {
+                total_day_time -= .5;
+            }
+
+            if (day_is_checked) {
+                day_value.closest('p').addClass('text-success');
+
+                day_value.text(total_day_time).addClass('text-dark');
             } else {
-                day_value.text('0');
+                day_value.closest('p').addClass('text-danger');
+
+                day_value.text(total_day_time).addClass('text-dark');
             }
         });
 

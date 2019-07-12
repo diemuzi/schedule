@@ -159,6 +159,11 @@ class Roster(models.Model):
         verbose_name=_('Sunday')
     )
 
+    has_break_sunday = models.BooleanField(
+        default=False,
+        verbose_name=_('Break')
+    )
+
     sunday_start_time_counter = models.CharField(
         max_length=4,
         validators=[
@@ -202,6 +207,11 @@ class Roster(models.Model):
     is_monday = models.BooleanField(
         default=False,
         verbose_name=_('Monday')
+    )
+
+    has_break_monday = models.BooleanField(
+        default=False,
+        verbose_name=_('Break')
     )
 
     monday_start_time_counter = models.CharField(
@@ -249,6 +259,11 @@ class Roster(models.Model):
         verbose_name=_('Tuesday')
     )
 
+    has_break_tuesday = models.BooleanField(
+        default=False,
+        verbose_name=_('Break')
+    )
+
     tuesday_start_time_counter = models.CharField(
         max_length=4,
         validators=[
@@ -292,6 +307,11 @@ class Roster(models.Model):
     is_wednesday = models.BooleanField(
         default=False,
         verbose_name=_('Wednesday')
+    )
+
+    has_break_wednesday = models.BooleanField(
+        default=False,
+        verbose_name=_('Break')
     )
 
     wednesday_start_time_counter = models.CharField(
@@ -339,6 +359,11 @@ class Roster(models.Model):
         verbose_name=_('Thursday')
     )
 
+    has_break_thursday = models.BooleanField(
+        default=False,
+        verbose_name=_('Break')
+    )
+
     thursday_start_time_counter = models.CharField(
         max_length=4,
         validators=[
@@ -384,6 +409,11 @@ class Roster(models.Model):
         verbose_name=_('Friday')
     )
 
+    has_break_friday = models.BooleanField(
+        default=False,
+        verbose_name=_('Break')
+    )
+
     friday_start_time_counter = models.CharField(
         max_length=4,
         validators=[
@@ -427,6 +457,11 @@ class Roster(models.Model):
     is_saturday = models.BooleanField(
         default=False,
         verbose_name=_('Saturday')
+    )
+
+    has_break_saturday = models.BooleanField(
+        default=False,
+        verbose_name=_('Break')
     )
 
     saturday_start_time_counter = models.CharField(

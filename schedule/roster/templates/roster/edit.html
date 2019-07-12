@@ -62,6 +62,8 @@
                         {% include 'form/input.html' with input=form.sunday_end_time_outside %}
                     </p>
 
+                    {% include 'form/checkbox.html' with checkbox=form.has_break_sunday %}
+
                     <p class="card-text">{{ _('Hours') }}: <span id="sunday_total"></span></p>
                 </div>
             </div>
@@ -83,6 +85,8 @@
                         {% include 'form/input.html' with input=form.monday_start_time_outside %}
                         {% include 'form/input.html' with input=form.monday_end_time_outside %}
                     </p>
+
+                    {% include 'form/checkbox.html' with checkbox=form.has_break_monday %}
 
                     <p class="card-text">{{ _('Hours') }}: <span id="monday_total"></span></p>
                 </div>
@@ -108,6 +112,8 @@
                         {% include 'form/input.html' with input=form.tuesday_end_time_outside %}
                     </p>
 
+                    {% include 'form/checkbox.html' with checkbox=form.has_break_tuesday %}
+
                     <p class="card-text">{{ _('Hours') }}: <span id="tuesday_total"></span></p>
                 </div>
             </div>
@@ -130,6 +136,8 @@
                         {% include 'form/input.html' with input=form.wednesday_end_time_outside %}
                     </p>
 
+                    {% include 'form/checkbox.html' with checkbox=form.has_break_wednesday %}
+
                     <p class="card-text">{{ _('Hours') }}: <span id="wednesday_total"></span></p>
                 </div>
             </div>
@@ -151,6 +159,8 @@
                         {% include 'form/input.html' with input=form.thursday_start_time_outside %}
                         {% include 'form/input.html' with input=form.thursday_end_time_outside %}
                     </p>
+
+                    {% include 'form/checkbox.html' with checkbox=form.has_break_thursday %}
 
                     <p class="card-text">{{ _('Hours') }}: <span id="thursday_total"></span></p>
                 </div>
@@ -176,6 +186,8 @@
                         {% include 'form/input.html' with input=form.friday_end_time_outside %}
                     </p>
 
+                    {% include 'form/checkbox.html' with checkbox=form.has_break_friday %}
+
                     <p class="card-text">{{ _('Hours') }}: <span id="friday_total"></span></p>
                 </div>
             </div>
@@ -197,6 +209,8 @@
                         {% include 'form/input.html' with input=form.saturday_start_time_outside %}
                         {% include 'form/input.html' with input=form.saturday_end_time_outside %}
                     </p>
+
+                    {% include 'form/checkbox.html' with checkbox=form.has_break_saturday %}
 
                     <p class="card-text">{{ _('Hours') }}: <span id="saturday_total"></span></p>
                 </div>
