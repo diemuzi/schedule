@@ -57,7 +57,7 @@ class Profile(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):
 
     template_name = 'employee/edit.html'
 
-    success_message = _('Updated Employee Profile')
+    success_message = _('Updated Employee Profile.')
 
     def get_object(self, queryset=None):
         return get_object_or_404(models.Account, pk=self.kwargs['pk'], is_staff=True)
