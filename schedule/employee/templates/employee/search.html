@@ -32,6 +32,8 @@
                 <tr>
                     <th>{{ _('Name') }}</th>
 
+                    <th class="no-sort">{{ _('Schedule') }}</th>
+
                     <th class="no-sort">{{ _('Edit') }}</th>
 
                     <th class="no-sort">{{ _('Delete') }}</th>
@@ -45,15 +47,28 @@
                     <th></th>
 
                     <th></th>
+
+                    <th></th>
                 </tr>
                 </tfoot>
 
                 <tbody>
                 {% for item in object_list %}
                     <tr>
-                        <td class="w-95">{{ item|escape }}</td>
+                        <td class="w-79">{{ item|escape }}</td>
 
-                        <td class="action w-5">
+                        <td class="action w-7">
+                            <a href="{% url 'roster:edit' item.pk %}">
+                                <button class="btn btn-success btn-xs"
+                                        data-title="{{ _('Schedule') }}">
+
+                                    <i class="far fa-calendar-alt"
+                                       aria-hidden="true"></i>
+                                </button>
+                            </a>
+                        </td>
+
+                        <td class="action w-7">
                             <a href="{% url 'employee:edit' item.pk %}">
                                 <button class="btn btn-primary btn-xs"
                                         data-title="{{ _('Edit') }}">
@@ -64,7 +79,7 @@
                             </a>
                         </td>
 
-                        <td class="action w-5">
+                        <td class="action w-7">
                             <button class="btn btn-danger btn-xs btn-delete"
                                     data-title="{{ _('Delete') }}"
                                     data-url="{% url 'employee:delete' item.pk %}"
@@ -84,7 +99,7 @@
     <form action="#" method="post" id="modal_url_delete">
         {% csrf_token %}
 
-        {% form_dialog _('Continuing will remove this Employee') 'delete' %}
+        {% form_dialog _('Continuing will remove this Employee.') 'delete' %}
     </form>
 
 {% endblock content %}
