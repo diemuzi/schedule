@@ -25,12 +25,14 @@ class Download(LoginRequiredMixin, generic.View):
 
         # BGM page.
         bgm = workbook.add_worksheet(name='BGM')
+        bgm.set_header('&CBayou Grande Marina Schedule')
         bgm.hide_gridlines(False)
         bgm.set_landscape()
         bgm.fit_to_pages(1, 0)
 
         # SCM page.
         scm = workbook.add_worksheet(name='SCM')
+        scm.set_header('&CSherman Cove Marina Schedule')
         scm.hide_gridlines(False)
         scm.set_landscape()
         scm.fit_to_pages(1, 0)
@@ -96,8 +98,25 @@ class Download(LoginRequiredMixin, generic.View):
         scm_row = 1
         col = 0
 
+        roster = models.Roster.objects.filter(account__is_superuser=False, account__is_staff=True).order_by(
+            'account__first_name')
+
         # Create page data.
-        for item in models.Roster.objects.all().order_by('account__first_name'):
+        for item in roster:
+            # Employee page.
+            employee_page = workbook.add_worksheet(name=item.account.first_name + ' ' + item.account.last_name)
+            employee_page.set_header('&C' + item.account.first_name + ' ' + item.account.last_name + ' Schedule')
+            employee_page.hide_gridlines(False)
+            employee_page.set_landscape()
+            employee_page.fit_to_pages(1, 0)
+
+            employee_page.set_column(0, 7, 20, cell_format_default)
+
+            for key, value in header_names.items():
+                employee_page.write(key, value[0], value[1])
+
+            employee_page.write_string(1, col, item.account.first_name, cell_format_name)
+
             # Daily schedules.
             schedule = OrderedDict({
                 'friday': {
@@ -184,6 +203,9 @@ class Download(LoginRequiredMixin, generic.View):
                     bgm.write_string(bgm_row, value['col'], dow, cell_format_default)
                 else:
                     scm.write_string(scm_row, value['col'], dow, cell_format_default)
+
+                # Employee page.
+                employee_page.write_string(1, value['col'], dow, cell_format_default)
 
             # Row counter.
             if item.account.facility == 'bgm':
