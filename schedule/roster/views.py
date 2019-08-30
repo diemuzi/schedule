@@ -122,58 +122,44 @@ class Download(LoginRequiredMixin, generic.View):
                 'friday': {
                     'set': item.is_friday,
                     'col': col + 1,
-                    'counter_start_time': item.friday_start_time_counter,
-                    'counter_end_time': item.friday_end_time_counter,
-                    'outside_start_time': item.friday_start_time_outside,
-                    'outside_end_time': item.friday_end_time_outside
+                    'start_time': item.start_time_friday,
+                    'end_time': item.end_time_friday
                 },
                 'saturday': {
                     'set': item.is_saturday,
                     'col': col + 2,
-                    'counter_start_time': item.saturday_start_time_counter,
-                    'counter_end_time': item.saturday_end_time_counter,
-                    'outside_start_time': item.saturday_start_time_outside,
-                    'outside_end_time': item.saturday_end_time_outside
+                    'start_time': item.start_time_saturday,
+                    'end_time': item.end_time_saturday
                 },
                 'sunday': {
                     'set': item.is_sunday,
                     'col': col + 3,
-                    'counter_start_time': item.sunday_start_time_counter,
-                    'counter_end_time': item.sunday_end_time_counter,
-                    'outside_start_time': item.sunday_start_time_outside,
-                    'outside_end_time': item.sunday_end_time_outside
+                    'start_time': item.start_time_sunday,
+                    'end_time': item.end_time_sunday
                 },
                 'monday': {
                     'set': item.is_monday,
                     'col': col + 4,
-                    'counter_start_time': item.monday_start_time_counter,
-                    'counter_end_time': item.monday_end_time_counter,
-                    'outside_start_time': item.monday_start_time_outside,
-                    'outside_end_time': item.monday_end_time_outside
+                    'start_time': item.start_time_monday,
+                    'end_time': item.end_time_monday
                 },
                 'tuesday': {
                     'set': item.is_tuesday,
                     'col': col + 5,
-                    'counter_start_time': item.tuesday_start_time_counter,
-                    'counter_end_time': item.tuesday_end_time_counter,
-                    'outside_start_time': item.tuesday_start_time_outside,
-                    'outside_end_time': item.tuesday_end_time_outside
+                    'start_time': item.start_time_tuesday,
+                    'end_time': item.end_time_tuesday
                 },
                 'wednesday': {
                     'set': item.is_wednesday,
                     'col': col + 6,
-                    'counter_start_time': item.wednesday_start_time_counter,
-                    'counter_end_time': item.wednesday_end_time_counter,
-                    'outside_start_time': item.wednesday_start_time_outside,
-                    'outside_end_time': item.wednesday_end_time_outside
+                    'start_time': item.start_time_wednesday,
+                    'end_time': item.end_time_wednesday
                 },
                 'thursday': {
                     'set': item.is_thursday,
                     'col': col + 7,
-                    'counter_start_time': item.thursday_start_time_counter,
-                    'counter_end_time': item.thursday_end_time_counter,
-                    'outside_start_time': item.thursday_start_time_outside,
-                    'outside_end_time': item.thursday_end_time_outside
+                    'start_time': item.start_time_thursday,
+                    'end_time': item.end_time_thursday
                 }
             })
 
@@ -188,16 +174,8 @@ class Download(LoginRequiredMixin, generic.View):
                 dow = ''
 
                 if value['set']:
-                    if not value['counter_start_time'] is None and not value['counter_end_time'] is None:
-                        dow += str(value['counter_start_time']) + ' - ' + str(
-                            value['counter_end_time']) + ' - Counter'
-
-                    if not value['outside_start_time'] is None and not value['outside_end_time'] is None:
-                        if dow != '':
-                            dow += "\n"
-
-                        dow += str(value['outside_start_time']) + ' - ' + str(
-                            value['outside_end_time']) + ' - Outside'
+                    if not value['start_time'] is None and not value['end_time'] is None:
+                        dow += str(value['start_time']) + ' - ' + str(value['end_time'])
 
                 if item.account.facility == 'bgm':
                     bgm.write_string(bgm_row, value['col'], dow, cell_format_default)

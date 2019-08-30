@@ -27,21 +27,14 @@ $(function () {
             let total_day_time = 0;
             let day_is_checked = $('#id_is_' + value).is(':checked');
             let break_is_checked = $('#id_has_break_' + value).is(':checked');
-            let day_value = $('#' + value + '_total');
-            let time_counter = convertTime($('input#id_' + value + '_start_time_counter'), $('input#id_' + value + '_end_time_counter'));
-            let time_outside = convertTime($('input#id_' + value + '_start_time_outside'), $('input#id_' + value + '_end_time_outside'));
+            let day_value = $('#total_' + value);
+            let time = convertTime($('input#id_start_time_' + value), $('input#id_end_time_' + value));
 
-            if (time_counter !== null && day_is_checked) {
-                total_time += time_counter;
+            if (time !== null && day_is_checked) {
+                total_time += time;
             }
 
-            total_day_time += time_counter;
-
-            if (time_outside !== null && day_is_checked) {
-                total_time += time_outside;
-            }
-
-            total_day_time += time_outside;
+            total_day_time += time;
 
             if (day_is_checked && break_is_checked) {
                 total_time -= .5;
