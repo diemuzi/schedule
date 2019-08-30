@@ -164,7 +164,7 @@ class Roster(models.Model):
         verbose_name=_('Break')
     )
 
-    sunday_start_time_counter = models.CharField(
+    start_time_sunday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -174,27 +174,7 @@ class Roster(models.Model):
         verbose_name=_('Start Time')
     )
 
-    sunday_end_time_counter = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('End Time')
-    )
-
-    sunday_start_time_outside = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('Start Time')
-    )
-
-    sunday_end_time_outside = models.CharField(
+    end_time_sunday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -214,7 +194,7 @@ class Roster(models.Model):
         verbose_name=_('Break')
     )
 
-    monday_start_time_counter = models.CharField(
+    start_time_monday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -224,27 +204,7 @@ class Roster(models.Model):
         verbose_name=_('Start Time')
     )
 
-    monday_end_time_counter = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('End Time')
-    )
-
-    monday_start_time_outside = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('Start Time')
-    )
-
-    monday_end_time_outside = models.CharField(
+    end_time_monday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -264,7 +224,7 @@ class Roster(models.Model):
         verbose_name=_('Break')
     )
 
-    tuesday_start_time_counter = models.CharField(
+    start_time_tuesday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -274,27 +234,7 @@ class Roster(models.Model):
         verbose_name=_('Start Time')
     )
 
-    tuesday_end_time_counter = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('End Time')
-    )
-
-    tuesday_start_time_outside = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('Start Time')
-    )
-
-    tuesday_end_time_outside = models.CharField(
+    end_time_tuesday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -314,7 +254,7 @@ class Roster(models.Model):
         verbose_name=_('Break')
     )
 
-    wednesday_start_time_counter = models.CharField(
+    start_time_wednesday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -324,27 +264,7 @@ class Roster(models.Model):
         verbose_name=_('Start Time')
     )
 
-    wednesday_end_time_counter = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('End Time')
-    )
-
-    wednesday_start_time_outside = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('Start Time')
-    )
-
-    wednesday_end_time_outside = models.CharField(
+    end_time_wednesday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -364,7 +284,7 @@ class Roster(models.Model):
         verbose_name=_('Break')
     )
 
-    thursday_start_time_counter = models.CharField(
+    start_time_thursday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -374,27 +294,7 @@ class Roster(models.Model):
         verbose_name=_('Start Time')
     )
 
-    thursday_end_time_counter = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('End Time')
-    )
-
-    thursday_start_time_outside = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('Start Time')
-    )
-
-    thursday_end_time_outside = models.CharField(
+    end_time_thursday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -414,7 +314,7 @@ class Roster(models.Model):
         verbose_name=_('Break')
     )
 
-    friday_start_time_counter = models.CharField(
+    start_time_friday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -424,27 +324,7 @@ class Roster(models.Model):
         verbose_name=_('Start Time')
     )
 
-    friday_end_time_counter = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('End Time')
-    )
-
-    friday_start_time_outside = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('Start Time')
-    )
-
-    friday_end_time_outside = models.CharField(
+    end_time_friday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -464,7 +344,7 @@ class Roster(models.Model):
         verbose_name=_('Break')
     )
 
-    saturday_start_time_counter = models.CharField(
+    start_time_saturday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
@@ -474,27 +354,7 @@ class Roster(models.Model):
         verbose_name=_('Start Time')
     )
 
-    saturday_end_time_counter = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('End Time')
-    )
-
-    saturday_start_time_outside = models.CharField(
-        max_length=4,
-        validators=[
-            validators.RegexValidator('^[0-9]+$')
-        ],
-        blank=True,
-        null=True,
-        verbose_name=_('Start Time')
-    )
-
-    saturday_end_time_outside = models.CharField(
+    end_time_saturday = models.CharField(
         max_length=4,
         validators=[
             validators.RegexValidator('^[0-9]+$')
