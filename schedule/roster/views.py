@@ -5,6 +5,7 @@ import xlsxwriter
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
+from django.shortcuts import get_list_or_404
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
@@ -208,6 +209,22 @@ class Download(LoginRequiredMixin, generic.View):
         response['Content-Disposition'] = 'attachment; filename=%s' % filename
 
         return response
+
+
+class PreviewAll(LoginRequiredMixin, generic.ListView):
+    template_name = 'roster/preview_all.html'
+
+    def get_queryset(self):
+        return get_list_or_404(
+            models.Roster.objects.filter(account__is_staff=True, account__is_superuser=False).order_by(
+                'account__last_name'))
+
+
+class PreviewEmployee(LoginRequiredMixin, generic.DetailView):
+    template_name = 'roster/preview_employee.html'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(models.Roster, account=self.kwargs['pk'])
 
 
 class Profile(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):

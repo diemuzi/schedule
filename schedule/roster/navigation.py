@@ -21,6 +21,14 @@ def breadcrumbs():
                 'url_name': 'edit'
             },
             {
+                'label': _('Preview All Schedules'),
+                'url_name': 'preview-all'
+            },
+            {
+                'label': _('Preview Employee Schedule'),
+                'url_name': 'preview-employee'
+            },
+            {
                 'label': _('Search Employees'),
                 'url_name': 'search'
             }

@@ -1,0 +1,263 @@
+{% extends 'asset/layout.html' %}
+
+{% load roster_convert_hours %}
+
+{% load compress %}
+
+{% load static %}
+
+{% block js %}
+    {% compress js %}
+        <script src="{% static 'roster/js/preview_employee.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
+
+{% block content %}
+
+    {% include 'roster/nav.html' with pk=object.pk %}
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">{{ _('Schedule') }}</div>
+
+                <div class="card-body">
+                    <div class="labelWrapper">
+                        <div class="labelHeader">{{ _('Employee') }}</div>
+                        <div>{{ object.account|escape }}</div>
+                    </div>
+
+                    <div class="labelWrapper">
+                        <div class="labelHeader">{{ _('Facility') }}</div>
+                        <div>{{ object.account.facility|escape|upper }}</div>
+                    </div>
+
+                    <div class="labelWrapper">
+                        <div class="labelHeader">{{ _('Total Time') }}</div>
+                        <div><span id="total_time"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="table-responsive table-hover">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">&nbsp;</th>
+                            <th>{{ _('Friday') }}</th>
+                            <th>{{ _('Saturday') }}</th>
+                            <th>{{ _('Sunday') }}</th>
+                            <th>{{ _('Monday') }}</th>
+                            <th>{{ _('Tuesday') }}</th>
+                            <th>{{ _('Wednesday') }}</th>
+                            <th>{{ _('Thursday') }}</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <th scope="row">{{ _('Schedule') }}</th>
+
+                            <td>
+                                {% if object.is_friday %}
+                                    {{ object.start_time_friday }} - {{ object.end_time_friday }}
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_saturday %}
+                                    {{ object.start_time_saturday }} - {{ object.end_time_saturday }}
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_sunday %}
+                                    {{ object.start_time_sunday }} - {{ object.end_time_sunday }}
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_monday %}
+                                    {{ object.start_time_monday }} - {{ object.end_time_monday }}
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_tuesday %}
+                                    {{ object.start_time_tuesday }} - {{ object.end_time_tuesday }}
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_wednesday %}
+                                    {{ object.start_time_wednesday }} - {{ object.end_time_wednesday }}
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_thursday %}
+                                    {{ object.start_time_thursday }} - {{ object.end_time_thursday }}
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">{{ _('Hours') }}</th>
+
+                            <td>
+                                {% if object.is_friday %}
+                                    <span id="friday">
+                                        {% roster_convert_hours object.end_time_friday object.start_time_friday object.has_break_friday %}
+                                    </span>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_saturday %}
+                                    <span id="saturday">
+                                        {% roster_convert_hours object.end_time_saturday object.start_time_saturday object.has_break_saturday %}
+                                    </span>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_sunday %}
+                                    <span id="sunday">
+                                        {% roster_convert_hours object.end_time_sunday object.start_time_sunday object.has_break_sunday %}
+                                    </span>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_monday %}
+                                    <span id="monday">
+                                        {% roster_convert_hours object.end_time_monday object.start_time_monday object.has_break_monday %}
+                                    </span>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_tuesday %}
+                                    <span id="tuesday">
+                                        {% roster_convert_hours object.end_time_tuesday object.start_time_tuesday object.has_break_tuesday %}
+                                    </span>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_wednesday %}
+                                    <span id="wednesday">
+                                        {% roster_convert_hours object.end_time_wednesday object.start_time_wednesday object.has_break_wednesday %}
+                                    </span>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.is_thursday %}
+                                    <span id="thursday">
+                                        {% roster_convert_hours object.end_time_thursday object.start_time_thursday object.has_break_thursday %}
+                                    </span>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">{{ _('Has Break?') }}</th>
+
+                            <td>
+                                {% if object.has_break_friday %}
+                                    <i class="fas fa-check text-success"></i>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.has_break_saturday %}
+                                    <i class="fas fa-check text-success"></i>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.has_break_sunday %}
+                                    <i class="fas fa-check text-success"></i>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.has_break_monday %}
+                                    <i class="fas fa-check text-success"></i>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.has_break_tuesday %}
+                                    <i class="fas fa-check text-success"></i>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.has_break_wednesday %}
+                                    <i class="fas fa-check text-success"></i>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if object.has_break_thursday %}
+                                    <i class="fas fa-check text-success"></i>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

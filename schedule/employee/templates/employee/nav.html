@@ -29,13 +29,27 @@
                 <i class="far fa-calendar-alt"></i> {{ _('Schedule') }}
             </a>
         </li>
+
+        <li class="nav-item">
+            <a href="{% url 'roster:preview-employee' pk %}"
+               class="nav-link{% if request.resolver_match.url_name == 'preview-employee' %} active{% endif %}">
+                <i class="far fa-eye"></i> {{ _('Preview') }}
+            </a>
+        </li>
     {% endif %}
 
-    {% if request.resolver_match.url_name in 'search' %}
+    {% if request.resolver_match.url_name in 'search preview-all' %}
         <li class="nav-item">
             <a href="{% url 'roster:download' %}"
                class="nav-link">
                 <i class="fas fa-download"></i> {{ _('Download') }}
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'roster:preview-all' %}"
+               class="nav-link{% if request.resolver_match.url_name == 'preview-all' %} active{% endif %}">
+                <i class="far fa-eye"></i> {{ _('Preview') }}
             </a>
         </li>
     {% endif %}
