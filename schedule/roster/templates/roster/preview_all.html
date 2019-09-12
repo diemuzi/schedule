@@ -4,87 +4,188 @@
 
     {% include 'employee/nav.html' %}
 
-    <div class="table-responsive table-hover">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">&nbsp;</th>
-                <th>{{ _('Friday') }}</th>
-                <th>{{ _('Saturday') }}</th>
-                <th>{{ _('Sunday') }}</th>
-                <th>{{ _('Monday') }}</th>
-                <th>{{ _('Tuesday') }}</th>
-                <th>{{ _('Wednesday') }}</th>
-                <th>{{ _('Thursday') }}</th>
-            </tr>
-            </thead>
+    <div class="card">
+        <div class="card-header">{{ _('BGM') }}</div>
 
-            <tbody>
-            {% for item in object_list %}
-                <tr>
-                    <th scope="row">
-                        <a href="{% url 'roster:edit' item.pk %}">{{ item.account }}</a>
-                    </th>
+        <div class="card-body">
+            <div class="table-responsive table-hover">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">&nbsp;</th>
+                        <th>{{ _('Friday') }}</th>
+                        <th>{{ _('Saturday') }}</th>
+                        <th>{{ _('Sunday') }}</th>
+                        <th>{{ _('Monday') }}</th>
+                        <th>{{ _('Tuesday') }}</th>
+                        <th>{{ _('Wednesday') }}</th>
+                        <th>{{ _('Thursday') }}</th>
+                    </tr>
+                    </thead>
 
-                    <td>
-                        {% if item.is_friday %}
-                            {{ item.start_time_friday }} - {{ item.end_time_friday }}
-                        {% else %}
-                            <i class="fas fa-times text-danger"></i>
+                    <tbody>
+                    {% for item in object_list %}
+                        {% if item.account.facility == 'bgm' %}
+                            <tr>
+                                <th scope="row">
+                                    <a href="{% url 'roster:edit' item.pk %}">{{ item.account }}</a>
+                                </th>
+
+                                <td>
+                                    {% if item.is_friday %}
+                                        {{ item.start_time_friday }} - {{ item.end_time_friday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if item.is_saturday %}
+                                        {{ item.start_time_saturday }} - {{ item.end_time_saturday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if item.is_sunday %}
+                                        {{ item.start_time_sunday }} - {{ item.end_time_sunday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if item.is_monday %}
+                                        {{ item.start_time_monday }} - {{ item.end_time_monday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if item.is_tuesday %}
+                                        {{ item.start_time_tuesday }} - {{ item.end_time_tuesday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if item.is_wednesday %}
+                                        {{ item.start_time_wednesday }} - {{ item.end_time_wednesday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if item.is_thursday %}
+                                        {{ item.start_time_thursday }} - {{ item.end_time_thursday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+                            </tr>
                         {% endif %}
-                    </td>
+                    {% endfor %}
 
-                    <td>
-                        {% if item.is_saturday %}
-                            {{ item.start_time_saturday }} - {{ item.end_time_saturday }}
-                        {% else %}
-                            <i class="fas fa-times text-danger"></i>
-                        {% endif %}
-                    </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-                    <td>
-                        {% if item.is_sunday %}
-                            {{ item.start_time_sunday }} - {{ item.end_time_sunday }}
-                        {% else %}
-                            <i class="fas fa-times text-danger"></i>
-                        {% endif %}
-                    </td>
+    <div class="card mt-3 mb-3">
+        <div class="card-header">{{ _('SCM') }}</div>
 
-                    <td>
-                        {% if item.is_monday %}
-                            {{ item.start_time_monday }} - {{ item.end_time_monday }}
-                        {% else %}
-                            <i class="fas fa-times text-danger"></i>
-                        {% endif %}
-                    </td>
+        <div class="card-body">
+            <div class="table-responsive table-hover">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">&nbsp;</th>
+                        <th>{{ _('Friday') }}</th>
+                        <th>{{ _('Saturday') }}</th>
+                        <th>{{ _('Sunday') }}</th>
+                        <th>{{ _('Monday') }}</th>
+                        <th>{{ _('Tuesday') }}</th>
+                        <th>{{ _('Wednesday') }}</th>
+                        <th>{{ _('Thursday') }}</th>
+                    </tr>
+                    </thead>
 
-                    <td>
-                        {% if item.is_tuesday %}
-                            {{ item.start_time_tuesday }} - {{ item.end_time_tuesday }}
-                        {% else %}
-                            <i class="fas fa-times text-danger"></i>
-                        {% endif %}
-                    </td>
+                    <tbody>
+                    {% for item in object_list %}
+                        {% if item.account.facility == 'scm' %}
+                            <tr>
+                                <th scope="row">
+                                    <a href="{% url 'roster:edit' item.pk %}">{{ item.account }}</a>
+                                </th>
 
-                    <td>
-                        {% if item.is_wednesday %}
-                            {{ item.start_time_wednesday }} - {{ item.end_time_wednesday }}
-                        {% else %}
-                            <i class="fas fa-times text-danger"></i>
-                        {% endif %}
-                    </td>
+                                <td>
+                                    {% if item.is_friday %}
+                                        {{ item.start_time_friday }} - {{ item.end_time_friday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
 
-                    <td>
-                        {% if item.is_thursday %}
-                            {{ item.start_time_thursday }} - {{ item.end_time_thursday }}
-                        {% else %}
-                            <i class="fas fa-times text-danger"></i>
+                                <td>
+                                    {% if item.is_saturday %}
+                                        {{ item.start_time_saturday }} - {{ item.end_time_saturday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if item.is_sunday %}
+                                        {{ item.start_time_sunday }} - {{ item.end_time_sunday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if item.is_monday %}
+                                        {{ item.start_time_monday }} - {{ item.end_time_monday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if item.is_tuesday %}
+                                        {{ item.start_time_tuesday }} - {{ item.end_time_tuesday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if item.is_wednesday %}
+                                        {{ item.start_time_wednesday }} - {{ item.end_time_wednesday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if item.is_thursday %}
+                                        {{ item.start_time_thursday }} - {{ item.end_time_thursday }}
+                                    {% else %}
+                                        <i class="fas fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+                            </tr>
                         {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
 {% endblock content %}
