@@ -6,22 +6,22 @@ Database Configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'schedule',
-        'USER': 'schedule_user',
-        'PASSWORD': 'password',
-        'HOST': '10.1.1.1',
+        'NAME': 'DATABASE',
+        'USER': 'USERNAME',
+        'PASSWORD': 'PASSWORD',
+        'HOST': 'HOSTNAME',
         'PORT': 5432,
         'TEST': {
-            'NAME': 'test_schedule'
+            'NAME': 'test_DATABASE'
         },
         'ATOMIC_REQUESTS': True
     },
     'default_slave1': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'schedule',
-        'USER': 'schedule_user',
-        'PASSWORD': 'password',
-        'HOST': '10.1.1.1',
+        'NAME': 'DATABASE',
+        'USER': 'USERNAME',
+        'PASSWORD': 'PASSWORD',
+        'HOST': 'HOSTNAME',
         'PORT': 5432,
         'TEST': {
             'MIRROR': 'default'
@@ -32,5 +32,5 @@ DATABASES = {
 
 # Database Routers
 DATABASE_ROUTERS = [
-    'schedule.database.router.MasterSlave'
+    'schedule.contrib.database.router.MasterSlave'
 ]

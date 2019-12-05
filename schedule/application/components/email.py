@@ -2,23 +2,26 @@
 Email Settings
 """
 
+# Backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 # Hostname
-EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST = 'HOSTNAME'
 
 # Username
-EMAIL_HOST_USER = 'username'
+EMAIL_HOST_USER = 'USERNAME'
 
 # Password
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_PASSWORD = 'PASSWORD'
 
 # Port
-EMAIL_PORT = 2525
+EMAIL_PORT = 587
 
 # TLS Support
-EMAIL_USE_TLS = False
+EMAIL_USE_TLS = True
 
 # From Email Address
-DEFAULT_FROM_EMAIL = 'noreply@example.com'
+DEFAULT_FROM_EMAIL = 'FROM_EMAIL_ADDRESS'
 
 #
 # Set the administrator email address(es)
@@ -28,7 +31,7 @@ DEFAULT_FROM_EMAIL = 'noreply@example.com'
 #
 # For more than 1 admin, recommended to use a mailing list address here
 ADMINS = [
-    'user@example.com'
+    'ADMIN_EMAIL_ADDRESS'
 ]
 
 #
@@ -39,5 +42,5 @@ ADMINS = [
 #
 # For more than 1 manager, recommended to use a mailing list address here
 MANAGERS = [
-    'user@example.com'
+    'MANAGER_EMAIL_ADDRESS'
 ]

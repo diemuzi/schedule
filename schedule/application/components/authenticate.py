@@ -2,7 +2,13 @@
 Authentication
 """
 
-AUTH_USER_MODEL = 'default.Account'
+# Authentication Model
+AUTH_USER_MODEL = 'login.Account'
+
+# Authentication Backends
+AUTHENTICATION_BACKENDS = [
+    'diemuzi.login.backends.AuthBackend'
+]
 
 # Password Hashers
 PASSWORD_HASHERS = [
@@ -27,9 +33,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'
     },
-    # {
-    #    'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'
-    # }
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'
+    }
 ]
 
 # Login / Redirect URL's

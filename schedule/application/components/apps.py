@@ -7,6 +7,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
+    'django.contrib.postgres',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.sitemaps',
@@ -21,7 +22,6 @@ INSTALLED_APPS.extend([
 
 # Base Applications
 INSTALLED_APPS.extend([
-    'schedule.database.default.apps.DefaultConfig',
     'schedule.contrib.form.apps.FormConfig',
     'schedule.contrib.locality.apps.LocalityConfig',
     'schedule.contrib.template.apps.TemplateConfig'
