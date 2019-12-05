@@ -1,2 +1,2 @@
-from schedule.database.default.models import Account
-from schedule.database.default.models import Roster
+from schedule.login.models import Account
+from schedule.roster.models import Roster

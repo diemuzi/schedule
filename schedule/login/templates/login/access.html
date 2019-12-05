@@ -1,0 +1,27 @@
+{% extends 'asset/layout/layout.html' %}
+
+{% block content %}
+
+    <div class="container mt-3">
+        {% include 'member/nav.html' %}
+
+        <div class="row row-cols-3 bg-dark text-white p-1">
+            <div class="col font-weight-bold">{{ _('IP Address') }}</div>
+            <div class="col font-weight-bold">{{ _('Reverse IP Address') }}</div>
+            <div class="col font-weight-bold">{{ _('Created On') }}</div>
+        </div>
+
+        <div class="row row-cols-3 mt-3 mb-3" id="search">
+            {% for item in object_list %}
+                <div class="col">{{ item.ipaddress|escape }}</div>
+                <div class="col">{{ item.reverse_ipaddress|escape }}</div>
+                <div class="col">{{ item.date_from|date:request.user.time_format }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Start Pagination -->
+        {% include 'login/pagination.html' %}
+        <!-- End Pagination -->
+    </div>
+
+{% endblock content %}

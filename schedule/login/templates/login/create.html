@@ -1,0 +1,29 @@
+{% extends 'asset/layout/layout.html' %}
+
+{% block content %}
+
+    <div class="col-lg-4 m-auto p-3">
+        <form action="{% url 'login:create' %}" method="post" novalidate>
+
+            {% csrf_token %}
+
+            <div class="card">
+                <div class="card-header">{{ _('New User Registration') }}</div>
+
+                <div class="card-body"
+                     id="pwd-container">
+                    {% include 'form/input.html' with input=form.first_name is_required=True %}
+                    {% include 'form/input.html' with input=form.last_name is_required=True %}
+                    {% include 'form/input.html' with input=form.email is_required=True %}
+                    {% include 'form/input.html' with input=form.username is_required=True %}
+                </div>
+
+                <div class="card-footer bg-transparent border-0">
+                    {% include 'form/submit_create.html' %}
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}

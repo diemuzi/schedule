@@ -1,14 +1,4 @@
-{% extends 'login/layout.html' %}
-
-{% load compress %}
-
-{% load static %}
-
-{% block js %}
-    {% compress js %}
-        <script src="{% static 'form/js/password.js' %}"></script>
-    {% endcompress %}
-{% endblock %}
+{% extends 'asset/layout/layout.html' %}
 
 {% block content %}
 
@@ -17,13 +7,25 @@
 
             {% csrf_token %}
 
+            <input type="hidden" name="next" value="{{ next }}">
+
             <div class="card mb-3">
                 <div class="card-header">{{ _('Login') }}</div>
 
                 <div class="card-body"
                      id="pwd-container">
+                    {% if form.errors %}
+                        <div class="border border-danger p-3 mb-3">
+                            {{ _("Your email address and password didn't match. Please try again.") }}
+                        </div>
+                    {% endif %}
+
                     {% include 'form/input.html' with input=form.username is_required=True %}
-                    {% include 'form/input.html' with input=form.password is_required=True %}
+                    {% include 'form/password.html' with password=form.password is_required=True %}
+
+                    <div class="card-text">
+                        <a href="{% url 'password_reset' %}">{{ _('Forgot password?') }}</a>
+                    </div>
                 </div>
 
                 <div class="card-footer bg-transparent border-0">

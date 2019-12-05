@@ -36,7 +36,7 @@ class Delete(LoginRequiredMixin, generic.DeleteView):
         else:
             messages.success(self.request, _('Employee account has been removed.'))
 
-            return super(__class__, self).delete(request, *args, **kwargs)
+            return super(Delete, self).delete(request, *args, **kwargs)
 
     def get_object(self, queryset=None):
         return get_object_or_404(models.Account, pk=self.kwargs['pk'], is_staff=True)

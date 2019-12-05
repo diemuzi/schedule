@@ -22,7 +22,7 @@ class FormAdd(forms.ModelForm):
         self.instance.is_active = True
         self.instance.is_staff = True
 
-        return super(__class__, self).save()
+        return super(FormAdd, self).save()
 
 
 class FormEdit(forms.ModelForm):
