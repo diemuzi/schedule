@@ -37,35 +37,6 @@ def dialog(body, status):
             </button>
         """.format(dialog_confirm=_('Confirm'))
 
-    elif status == 'install':
-        button_cancel = """
-        <button type="button"
-                class="btn btn-default"
-                data-dismiss="modal">
-            <i class="fas fa-times"
-               aria-hidden="true"></i> {dialog_cancel}
-        </button>
-        """.format(dialog_cancel=_('Cancel'))
-
-        button_confirm = """
-        <a href="#"
-           id="modal_url_install">
-            <button type="button"
-                    class="btn btn-success">
-                <i class="fas fa-play fa-1x"></i> {dialog_confirm}
-            </button>
-        </a>
-        """.format(dialog_confirm=_('Confirm'))
-
-    elif status == 'queue':
-        button_confirm = """
-        <button type="button"
-                class="btn btn-warning"
-                data-dismiss="modal">
-            <i class="far fa-clock fa-1x"></i> {dialog_confirm}
-        </button>
-        """.format(dialog_confirm=_('OK'))
-
     modal = """
     <!-- Start {status} Modal -->
     <div class="modal fade"

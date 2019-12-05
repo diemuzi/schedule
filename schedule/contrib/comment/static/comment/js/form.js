@@ -1,64 +1,41 @@
 /**
+ * Modal Comments
+ */
+$(function () {
+    $('#commentOpen').on('click', function () {
+        let popup = $('#commentModal');
+
+        let popup_url = $('#form_comment').attr('action');
+
+        let popup_body = $('.modal-body');
+
+        popup_body.load(popup_url);
+
+        popup.modal('show');
+    });
+});
+
+/**
  * Ajax Form Validation Handler
+ * Only used for Modal Comments
  */
 $(function () {
     /**
      * Form ID
      */
-    let form = $('#form');
+    let form = $('#form_comment');
 
     /**
      * Add Class
      */
-    form.find(
-        'input[type="email"], ' +
-        'input[type="number"], ' +
-        'input[type="password"], ' +
-        'input[type="text"], ' +
-        'input[type="url"], ' +
-        'select, ' +
-        'textarea'
-    ).addClass('form-control');
-
-    form.find(
-        'input[type="checkbox"]'
-    ).addClass('custom-control-input');
+    form.find('textarea').addClass('form-control');
 
     /**
      * Remove Class
      */
-    form.find(
-        'input[type="button"], ' +
-        'input[type="checkbox"], ' +
-        'input[type="submit"]'
-    ).removeClass('form-control');
+    //form.find('input[type="submit"]').removeClass('form-control');
 
-    /**
-     * Fixes Labels to match Form Input fields
-     */
-    $('label').each(function () {
-        let label = $(this);
-
-        // Remove : from all labels (django forms induced)
-        label.text(label.text().trim().replace(/:/i, ''));
-
-        let placeholder = label.text();
-
-        label.addClass('font-weight-bold');
-
-        label.closest('.form-group').find('input, textarea').attr('placeholder', placeholder).focus().blur();
-    });
-
-    /**
-     * Adds CSS for Custom Checkboxes
-     */
-    $('.custom-checkbox, .custom-switch').each(function () {
-        let label = $(this);
-
-        label.find('label').addClass('custom-control-label');
-    });
-
-    let submit = $('#submit');
+    let submit = $('#submit_comment');
 
     /**
      * Submit Form
@@ -66,28 +43,10 @@ $(function () {
     submit.on('click',
         function () {
             /**
-             * Start Block UI
-             */
-            $.blockUI(
-                {
-                    message: '<i class="fas fa-spinner fa-pulse fa-5x"></i>',
-                    css: {
-                        '-webkit-border-radius': '10px',
-                        '-moz-border-radius': '10px',
-                        backgroundColor: '#000',
-                        padding: '15px',
-                        border: 'none',
-                        opacity: .5,
-                        color: '#fff'
-                    }
-                }
-            );
-
-            /**
              * Show Spinner on Submit Button
              */
             submit
-                .after('<i class="fas fa-spinner fa-pulse fa-lg" id="busy"></i>')
+                .after('<i class="fas fa-spinner fa-pulse fa-lg" id="busy_comment"></i>')
                 .hide();
 
             /**
@@ -175,20 +134,11 @@ $(function () {
                                  * All Visable Elements Except CSRF
                                  */
                                 if (key !== 'csrfmiddlewaretoken' && nameKey.is(':visible')) {
-                                    inputKey.find('input, select, textarea')
+                                    inputKey.find('textarea')
                                         .removeClass('is-valid')
                                         .addClass('is-invalid');
 
-                                    if (nameKey.is(':checkbox')) {
-                                        $('div #input-' + key + ':first label:first').after('<span id="id_' + key + '-status" class="form-text text-danger">' + value + '</span>');
-                                    } else {
-                                        nameKey.after('<span id="id_' + key + '-status" class="form-text text-danger">' + value + '</span>');
-                                    }
-                                } else {
-                                    /**
-                                     * Any hidden errors will be displayed after the submit button
-                                     */
-                                    submit.after('<span id="id_' + key + '-status" class="form-text text-danger">' + value + '</span>');
+                                    nameKey.after('<span id="id_' + key + '-status" class="form-text text-danger">' + value + '</span>');
                                 }
                             }
 
@@ -200,7 +150,7 @@ $(function () {
                                  * All Element Except CSRF
                                  */
                                 if (key !== 'csrfmiddlewaretoken' && nameKey.is(':visible')) {
-                                    inputKey.find('input, select, textarea')
+                                    inputKey.find('textarea')
                                         .removeClass('is-invalid')
                                         .addClass('is-valid');
                                 }
@@ -216,11 +166,6 @@ $(function () {
             process.always(
                 function () {
                     /**
-                     * End Block UI
-                     */
-                    $.unblockUI();
-
-                    /**
                      * Show Submit Button
                      */
                     submit.show();
@@ -228,7 +173,7 @@ $(function () {
                     /**
                      * Remove Spinner on Submit Button
                      */
-                    $('#busy').hide();
+                    $('#busy_comment').hide();
                 }
             );
 

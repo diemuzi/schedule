@@ -2,7 +2,7 @@ from django.db import transaction
 from django.http import JsonResponse
 from django.views import generic
 
-from schedule.utils.redirects import json_redirect
+from schedule.contrib.form.redirects import json_redirect
 
 
 class AjaxResponseMixin(generic.FormView):
