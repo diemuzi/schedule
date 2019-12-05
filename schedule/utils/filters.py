@@ -1,3 +1,8 @@
+from html.parser import HTMLParser
+
+from django.db.models.fields.files import ImageFieldFile
+
+
 def isdefined(string):
     """
     Check if value has data
@@ -25,5 +30,56 @@ def isdefined(string):
         return False
     elif type(string) is bool:
         return True
+    elif type(string) is ImageFieldFile and isinstance(string, ValueError):
+        return False
     else:
         return True
+
+
+def isimage(string):
+    """
+    Check if image exists
+
+    :param object string: Data to test with
+
+    :return: bool|object
+    """
+
+    if type(string) is ImageFieldFile:
+        try:
+            return string
+        except ValueError:
+            return False
+
+    return string
+
+
+def strip_html(html):
+    """
+    Strips HTML from string
+
+    :param str html: HTML string to be removed
+
+    :return: str
+    """
+
+    s = MLStripper()
+    s.feed(html)
+
+    return s.get_data()
+
+
+class MLStripper(HTMLParser):
+    def __init__(self):
+        super().__init__()
+
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+        self.fed = []
+
+    def handle_data(self, d):
+        self.fed.append(d)
+
+    def get_data(self):
+        return ''.join(self.fed)
