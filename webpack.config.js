@@ -1,4 +1,4 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const RemovePlugin = require('remove-files-webpack-plugin');
@@ -69,7 +69,7 @@ module.exports = {
     output: {
         filename: '[name].js',
         chunkFilename: '[name].chunk.js',
-        path: path.resolve(__dirname, 'schedule/asset/static/webpack')
+        path: path.resolve(__dirname, 'schedule/static/webpack')
     },
     optimization: {
         minimize: true,
@@ -117,14 +117,21 @@ module.exports = {
         }
     },
     plugins: [
-        new CleanWebpackPlugin(['schedule/static', 'schedule/asset/static/webpack']),
+        //new CleanWebpackPlugin(['schedule/static', 'schedule/static/webpack']),
+        new CleanWebpackPlugin({
+            dry: false,
+            verbose: true,
+            cleanOnceBeforeBuildPatterns: ['**/*', '../*'],
+            //cleanAfterEveryBuildPatterns: ['**/*', '../*'],
+            dangerouslyAllowCleanPatternsOutsideProject: true
+        }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
             chunkFilename: '[name].chunk.css'
         }),
         new RemovePlugin({
             after: {
-                root: path.resolve(__dirname, 'schedule/asset/static/webpack'),
+                root: path.resolve(__dirname, 'schedule/static/webpack'),
                 include: ['vendor-css.js']
             }
         }),
