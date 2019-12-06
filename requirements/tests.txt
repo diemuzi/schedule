@@ -1,6 +1,0 @@
--r dev.txt
-
-# Other Modules
-coverage
-python-coveralls
-pytest
