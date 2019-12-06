@@ -32,9 +32,9 @@ urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # i18n URL Patterns
 urlpatterns += i18n_patterns(
     # Schedule URLs
-    path('', include('schedule.employee.urls')),
-    path('login/', include('schedule.login.urls')),
-    path('roster/', include('schedule.roster.urls')),
+    path('', include('employee.urls')),
+    path('login/', include('login.urls')),
+    path('roster/', include('roster.urls')),
 
     # Django Registration / Password URLs
     path('', include('django.contrib.auth.urls'))

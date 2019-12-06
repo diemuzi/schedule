@@ -8,6 +8,12 @@ from application.components.middleware import MIDDLEWARE
 # Debug
 DEBUG = True
 
+# Allowed Hosts
+ALLOWED_HOSTS = []
+
+# Site ID
+SITE_ID = 1
+
 # Installed Applications
 INSTALLED_APPS.append('debug_toolbar')
 INSTALLED_APPS.append('django_extensions')

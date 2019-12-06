@@ -22,15 +22,15 @@ INSTALLED_APPS.extend([
 
 # Base Applications
 INSTALLED_APPS.extend([
-    'schedule.contrib.form.apps.FormConfig',
-    'schedule.contrib.locality.apps.LocalityConfig',
-    'schedule.contrib.template.apps.TemplateConfig'
+    'gwhcp.contrib.form.apps.FormConfig',
+    'gwhcp.contrib.locality.apps.LocalityConfig',
+    'gwhcp.contrib.template.apps.TemplateConfig'
 ])
 
 # Project Applications
 INSTALLED_APPS.extend([
-    'schedule.asset.apps.AssetConfig',
-    'schedule.employee.apps.EmployeeConfig',
-    'schedule.login.apps.LoginConfig',
-    'schedule.roster.apps.RosterConfig'
+    'asset.apps.AssetConfig',
+    'employee.apps.EmployeeConfig',
+    'login.apps.LoginConfig',
+    'roster.apps.RosterConfig'
 ])

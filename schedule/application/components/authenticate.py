@@ -7,7 +7,7 @@ AUTH_USER_MODEL = 'login.Account'
 
 # Authentication Backends
 AUTHENTICATION_BACKENDS = [
-    'diemuzi.login.backends.AuthBackend'
+    'login.backends.AuthBackend'
 ]
 
 # Password Hashers
