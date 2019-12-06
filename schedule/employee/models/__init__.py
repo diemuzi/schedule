@@ -1,2 +1,2 @@
-from schedule.login.models import Account
-from schedule.roster.models import Roster
+from login.models import Account
+from roster.models import Roster

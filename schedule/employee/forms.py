@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.hashers import get_random_string
 from django.contrib.auth.hashers import make_password
 
-from schedule.employee import models
+from employee import models
 
 
 class FormAdd(forms.ModelForm):

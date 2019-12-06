@@ -5,9 +5,9 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views import generic
 
-from schedule.login import forms
-from schedule.login import models
-from schedule.login.mixin import GaclMixin
+from login import forms
+from login import models
+from login.mixin import GaclMixin
 
 
 class Access(GaclMixin, generic.ListView):

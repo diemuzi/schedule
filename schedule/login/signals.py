@@ -1,13 +1,8 @@
-import socket
-
 from django.contrib import messages
 from django.contrib.auth import models as auth_models
 from django.db.models import Q
 from django.utils.translation import activate
 from django.utils.translation import gettext as _
-from ipware.ip import get_ip
-
-from schedule.login import models
 
 
 def create_group_permissions(sender, **kwargs):
@@ -21,14 +16,6 @@ def create_group_permissions(sender, **kwargs):
 
 
 def handle_login(sender, request, user, **kwargs):
-    ip = get_ip(request)
-
-    models.AccessLog.objects.create(
-        account=user,
-        ipaddress=ip,
-        reverse_ipaddress=socket.getfqdn(ip)
-    )
-
     request.session['django_language'] = user.locale
     request.session['django_timezone'] = user.time_zone
 

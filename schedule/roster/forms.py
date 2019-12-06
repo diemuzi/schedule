@@ -1,6 +1,6 @@
 from django import forms
 
-from schedule.roster import models
+from roster import models
 
 
 class FormEdit(forms.ModelForm):

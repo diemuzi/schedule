@@ -1,6 +1,6 @@
 from django.urls import path
 
-from schedule.roster import views
+from roster import views
 
 app_name = 'roster'
 

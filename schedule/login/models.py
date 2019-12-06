@@ -67,42 +67,7 @@ class UserManager(auth_models.BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-class AccessLog(models.Model):
-    account = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        blank=False,
-        null=False
-    )
-
-    date_from = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name=_('Created On')
-    )
-
-    ipaddress = models.GenericIPAddressField(
-        verbose_name=_('IP Address'),
-        blank=False,
-        null=False
-    )
-
-    reverse_ipaddress = models.TextField(
-        verbose_name=_('Reverse IP Address'),
-        blank=True,
-        null=True
-    )
-
-    class Meta:
-        db_table = 'access_log'
-
-        default_permissions = ('view',)
-
-
 class Account(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
-    class Comment(models.IntegerChoices):
-        NORMAL = 0, _('Normal - Oldest to Newest')
-        REVERSE = 1, _('Reverse - Newest to Oldest')
-
     class Facility(models.TextChoices):
         BGM = 'bgm', _('BGM')
         SCM = 'scm', _('SCM')
@@ -126,13 +91,6 @@ class Account(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         STANDARD_LONG = 'l, F d, Y H:i:s', 'Sunday, January 01, 2000 13:00:00'
         STANDARD_MED = 'F d, Y H:i:s', 'January 01, 2000 13:00:00'
         STANDARD_SHORT = 'Y-m-d H:i:s', '2000-01-01 13:00:00'
-
-    comment_order = models.IntegerField(
-        choices=Comment.choices,
-        default=0,
-        verbose_name=_('Comment Order'),
-        help_text=_('Choose how comments should be displayed.')
-    )
 
     date_from = models.DateTimeField(
         auto_now_add=True,

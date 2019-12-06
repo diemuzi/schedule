@@ -1,11 +1,11 @@
 from django.apps import AppConfig
+from gwhcp.contrib.template.templatetags.template_breadcrumb import nav
 
-from schedule.roster import navigation
-from schedule.contrib.template.templatetags.template_breadcrumb import nav
+from roster import navigation
 
 
 class RosterConfig(AppConfig):
-    name = 'schedule.roster'
+    name = 'roster'
 
     def ready(self):
         nav.append(navigation.breadcrumbs())

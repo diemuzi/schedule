@@ -99,7 +99,7 @@
     <form action="#" method="post" id="modal_url_delete">
         {% csrf_token %}
 
-        {% form_dialog _('Continuing will remove this Employee.') 'delete' %}
+        {% gwhcp_form_dialog _('Continuing will remove this Employee.') 'delete' %}
     </form>
 
 {% endblock content %}

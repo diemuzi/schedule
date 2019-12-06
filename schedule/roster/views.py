@@ -11,8 +11,8 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views import generic
 
-from schedule.roster import forms
-from schedule.roster import models
+from roster import forms
+from roster import models
 
 
 class Download(LoginRequiredMixin, generic.View):

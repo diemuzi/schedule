@@ -2,16 +2,16 @@ from django.apps import AppConfig
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.signals import user_logged_out
 from django.db.models.signals import post_migrate
+from gwhcp.contrib.template.templatetags.template_breadcrumb import nav
 
-from schedule.contrib.template.templatetags.template_breadcrumb import nav
-from schedule.login import navigation
+from login import navigation
 
 
 class LoginConfig(AppConfig):
-    name = 'schedule.login'
+    name = 'login'
 
     def ready(self):
-        from schedule.login import signals
+        from login import signals
 
         nav.append(navigation.breadcrumbs())
 

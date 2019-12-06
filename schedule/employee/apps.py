@@ -1,14 +1,14 @@
 from django.apps import AppConfig
+from gwhcp.contrib.template.templatetags.template_breadcrumb import nav
 
-from schedule.employee import navigation
-from schedule.contrib.template.templatetags.template_breadcrumb import nav
+from employee import navigation
 
 
 class EmployeeConfig(AppConfig):
-    name = 'schedule.employee'
+    name = 'employee'
 
     def ready(self):
         nav.append(navigation.breadcrumbs())
 
         # noinspection PyUnresolvedReferences
-        import schedule.employee.signal
+        import employee.signal

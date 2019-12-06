@@ -9,8 +9,8 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views import generic
 
-from schedule.employee import forms
-from schedule.employee import models
+from employee import forms
+from employee import models
 
 
 class Add(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):

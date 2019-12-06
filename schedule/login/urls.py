@@ -2,7 +2,7 @@ from django.contrib.auth.views import LogoutView
 from django.urls import path
 from django.urls import re_path
 
-from schedule.login import views
+from login import views
 
 app_name = 'login'
 

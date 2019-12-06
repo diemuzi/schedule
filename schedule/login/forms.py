@@ -1,6 +1,6 @@
 from django import forms
 
-from schedule.login import models
+from login import models
 
 
 class FormCreate(forms.ModelForm):

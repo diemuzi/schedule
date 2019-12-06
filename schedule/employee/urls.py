@@ -1,6 +1,6 @@
 from django.urls import path
 
-from schedule.employee import views
+from employee import views
 
 app_name = 'employee'
 
