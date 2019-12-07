@@ -1,0 +1,93 @@
+{% extends 'asset/layout/layout.html' %}
+
+{% load form_dialog %}
+
+{% load compress %}
+
+{% load static %}
+
+{% block js %}
+    {% compress js %}
+        <script src="{% static 'form/js/modal.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
+
+{% block content %}
+
+    {% include 'roster/nav.html' %}
+
+    <table class="table table-striped" id="search">
+        <thead>
+        <tr>
+            <th scope="col" class="w-25">{{ _('Name') }}</th>
+
+            <th scope="col" class="w-75">{{ _('Facility') }}</th>
+
+            {% if perms.roster.view_schedule %}
+                <th scope="col" class="text-center">{{ _('Schedule') }}</th>
+            {% endif %}
+
+            {% if perms.roster.view_roster %}
+                <th scope="col" class="text-center">{{ _('Profile') }}</th>
+            {% endif %}
+
+            {% if perms.login.delete_account %}
+                <th scope="col" class="text-center">{{ _('Delete') }}</th>
+            {% endif %}
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for item in object_list %}
+            <tr>
+                <td>{{ item|escape }}</td>
+
+                <td>{{ item.facility|escape|upper }}</td>
+
+                {% if perms.roster.view_schedule %}
+                    <td class="text-center">
+                        <a href="{% url 'roster:schedule' item.pk %}" class="nounderline">
+                            <button class="btn btn-success btn-xs"
+                                    data-title="{{ _('Schedule') }}">
+
+                                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                            </button>
+                        </a>
+                    </td>
+                {% endif %}
+
+                {% if perms.roster.view_roster %}
+                    <td class="text-center">
+                        <a href="{% url 'roster:profile' item.pk %}" class="nounderline">
+                            <button class="btn btn-primary btn-xs"
+                                    data-title="{{ _('Edit') }}">
+
+                                <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                            </button>
+                        </a>
+                    </td>
+                {% endif %}
+
+                {% if perms.login.delete_account %}
+                    <td class="text-center">
+                        <button class="btn btn-danger btn-xs btn-delete"
+                                data-title="{{ _('Delete') }}"
+                                data-url="{% url 'login:delete' item.pk %}"
+                                id="{{ item.pk }}">
+
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="#" method="post" id="modal_url_delete">
+        {% csrf_token %}
+
+        {% gwhcp_form_dialog _('Continuing will remove this employee.') 'delete' %}
+    </form>
+
+{% endblock content %}

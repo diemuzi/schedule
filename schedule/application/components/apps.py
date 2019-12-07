@@ -30,7 +30,6 @@ INSTALLED_APPS.extend([
 # Project Applications
 INSTALLED_APPS.extend([
     'asset.apps.AssetConfig',
-    'employee.apps.EmployeeConfig',
     'login.apps.LoginConfig',
     'roster.apps.RosterConfig'
 ])

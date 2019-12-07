@@ -2,9 +2,9 @@
 
 {% block content %}
 
-    {% include 'employee/nav.html' %}
+    {% include 'roster/nav.html' with pk=object.pk %}
 
-    <form action="{% url 'employee:add' %}" method="post" novalidate>
+    <form action="{% url 'roster:profile' object.pk %}" method="post" novalidate>
 
         {% csrf_token %}
 
@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="card-footer bg-transparent border-0">
-                        {% include 'form/submit_create.html' %}
+                        {% include 'form/submit_update.html' %}
                     </div>
                 </div>
             </div>

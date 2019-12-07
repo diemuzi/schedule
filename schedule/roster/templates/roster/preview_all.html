@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    {% include 'employee/nav.html' %}
+    {% include 'roster/nav.html' %}
 
     <div class="card">
         <div class="card-header">{{ _('BGM') }}</div>
@@ -12,14 +12,14 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">&nbsp;</th>
-                        <th>{{ _('Friday') }}</th>
-                        <th>{{ _('Saturday') }}</th>
-                        <th>{{ _('Sunday') }}</th>
-                        <th>{{ _('Monday') }}</th>
-                        <th>{{ _('Tuesday') }}</th>
-                        <th>{{ _('Wednesday') }}</th>
-                        <th>{{ _('Thursday') }}</th>
+                        <th scope="col" class="w-25">&nbsp;</th>
+                        <th class="text-center">{{ _('Friday') }}</th>
+                        <th class="text-center">{{ _('Saturday') }}</th>
+                        <th class="text-center">{{ _('Sunday') }}</th>
+                        <th class="text-center">{{ _('Monday') }}</th>
+                        <th class="text-center">{{ _('Tuesday') }}</th>
+                        <th class="text-center">{{ _('Wednesday') }}</th>
+                        <th class="text-center">{{ _('Thursday') }}</th>
                     </tr>
                     </thead>
 
@@ -28,10 +28,10 @@
                         {% if item.account.facility == 'bgm' %}
                             <tr>
                                 <th scope="row">
-                                    <a href="{% url 'roster:edit' item.pk %}">{{ item.account }}</a>
+                                    <a href="{% url 'roster:profile' item.pk %}" class="text-dark">{{ item.account|escape }}</a>
                                 </th>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_friday %}
                                         {{ item.start_time_friday }} - {{ item.end_time_friday }}
                                     {% else %}
@@ -39,7 +39,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_saturday %}
                                         {{ item.start_time_saturday }} - {{ item.end_time_saturday }}
                                     {% else %}
@@ -47,7 +47,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_sunday %}
                                         {{ item.start_time_sunday }} - {{ item.end_time_sunday }}
                                     {% else %}
@@ -55,7 +55,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_monday %}
                                         {{ item.start_time_monday }} - {{ item.end_time_monday }}
                                     {% else %}
@@ -63,7 +63,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_tuesday %}
                                         {{ item.start_time_tuesday }} - {{ item.end_time_tuesday }}
                                     {% else %}
@@ -71,7 +71,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_wednesday %}
                                         {{ item.start_time_wednesday }} - {{ item.end_time_wednesday }}
                                     {% else %}
@@ -79,7 +79,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_thursday %}
                                         {{ item.start_time_thursday }} - {{ item.end_time_thursday }}
                                     {% else %}
@@ -104,14 +104,14 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">&nbsp;</th>
-                        <th>{{ _('Friday') }}</th>
-                        <th>{{ _('Saturday') }}</th>
-                        <th>{{ _('Sunday') }}</th>
-                        <th>{{ _('Monday') }}</th>
-                        <th>{{ _('Tuesday') }}</th>
-                        <th>{{ _('Wednesday') }}</th>
-                        <th>{{ _('Thursday') }}</th>
+                        <th scope="col" class="w-25">&nbsp;</th>
+                        <th class="text-center">{{ _('Friday') }}</th>
+                        <th class="text-center">{{ _('Saturday') }}</th>
+                        <th class="text-center">{{ _('Sunday') }}</th>
+                        <th class="text-center">{{ _('Monday') }}</th>
+                        <th class="text-center">{{ _('Tuesday') }}</th>
+                        <th class="text-center">{{ _('Wednesday') }}</th>
+                        <th class="text-center">{{ _('Thursday') }}</th>
                     </tr>
                     </thead>
 
@@ -120,10 +120,10 @@
                         {% if item.account.facility == 'scm' %}
                             <tr>
                                 <th scope="row">
-                                    <a href="{% url 'roster:edit' item.pk %}">{{ item.account }}</a>
+                                    <a href="{% url 'roster:profile' item.pk %}" class="text-dark">{{ item.account|escape }}</a>
                                 </th>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_friday %}
                                         {{ item.start_time_friday }} - {{ item.end_time_friday }}
                                     {% else %}
@@ -131,7 +131,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_saturday %}
                                         {{ item.start_time_saturday }} - {{ item.end_time_saturday }}
                                     {% else %}
@@ -139,7 +139,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_sunday %}
                                         {{ item.start_time_sunday }} - {{ item.end_time_sunday }}
                                     {% else %}
@@ -147,7 +147,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_monday %}
                                         {{ item.start_time_monday }} - {{ item.end_time_monday }}
                                     {% else %}
@@ -155,7 +155,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_tuesday %}
                                         {{ item.start_time_tuesday }} - {{ item.end_time_tuesday }}
                                     {% else %}
@@ -163,7 +163,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_wednesday %}
                                         {{ item.start_time_wednesday }} - {{ item.end_time_wednesday }}
                                     {% else %}
@@ -171,7 +171,7 @@
                                     {% endif %}
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     {% if item.is_thursday %}
                                         {{ item.start_time_thursday }} - {{ item.end_time_thursday }}
                                     {% else %}

@@ -1,24 +1,26 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'employee:search' %}"><i class="far fa-calendar-alt"></i> {{ _('Schedule') }}</a>
+    <a class="navbar-brand" href="{% url 'roster:search' %}"><i class="far fa-calendar-alt"></i> {{ _('Schedule') }}</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavBarTop"
             aria-controls="NavBarTop" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-align-justify"></i>
     </button>
 
-    <div class="collapse navbar-collapse" id="NavBarTop">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'employee:password' %}">
-                    <i class="fas fa-user-shield"></i> {{ _('Change Password') }}
-                </a>
-            </li>
+    {% if user.is_authenticated %}
+        <div class="collapse navbar-collapse" id="NavBarTop">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login:password' %}">
+                        <i class="fas fa-user-shield"></i> {{ _('Change Password') }}
+                    </a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'login:logout' %}">
-                    <i class="fas fa-sign-out-alt fa-fw"></i> {{ _('Logout') }}
-                </a>
-            </li>
-        </ul>
-    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login:logout' %}">
+                        <i class="fas fa-sign-out-alt fa-fw"></i> {{ _('Logout') }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    {% endif %}
 </nav>

@@ -8,11 +8,7 @@ $(function () {
             let day_value = parseFloat($('#' + value).text()) || 0;
 
             if (day_value !== undefined || day_value !== 0) {
-                console.log(day_value);
-
                 total_time += day_value;
-
-                console.log(total_time);
             }
         });
 

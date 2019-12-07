@@ -1,27 +1,52 @@
 <ul class="nav nav-tabs mb-2">
     <li class="nav-item">
-        <a href="{% url 'employee:search' %}"
-           class="nav-link">
+        <a href="{% url 'roster:search' %}"
+           class="nav-link{% if request.resolver_match.url_name == 'search' %} active{% endif %} text-dark">
             <i class="fas fa-search"></i> {{ _('Search') }}</a>
     </li>
 
-    {% if request.resolver_match.url_name in 'edit preview-employee schedule' %}
+    {% if request.resolver_match.url_name == 'search' %}
         <li class="nav-item">
-            <a href="{% url 'employee:edit' pk %}"
-               class="nav-link">
+            <a href="{% url 'login:create' %}"
+               class="nav-link{% if request.resolver_match.url_name == 'create' %} active{% endif %} text-dark">
+                <i class="fas fa-plus-circle"></i> {{ _('Create') }}
+            </a>
+        </li>
+    {% endif %}
+
+    {% if request.resolver_match.url_name in 'search preview-all' %}
+        <li class="nav-item">
+            <a href="{% url 'roster:download' %}"
+               class="nav-link text-dark">
+                <i class="fas fa-download"></i> {{ _('Download') }}
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'roster:preview-all' %}"
+               class="nav-link{% if request.resolver_match.url_name == 'preview-all' %} active{% endif %} text-dark">
+                <i class="far fa-eye"></i> {{ _('Preview') }}
+            </a>
+        </li>
+    {% endif %}
+
+    {% if request.resolver_match.url_name in 'preview-employee profile schedule' %}
+        <li class="nav-item">
+            <a href="{% url 'roster:profile' pk %}"
+               class="nav-link{% if request.resolver_match.url_name == 'profile' %} active{% endif %} text-dark">
                 <i class="fas fa-user-tie"></i> {{ _('Profile') }}</a>
         </li>
 
         <li class="nav-item">
-            <a href="{% url 'roster:edit' pk %}"
-               class="nav-link{% if request.resolver_match.url_name == 'edit' %} active{% endif %}">
+            <a href="{% url 'roster:schedule' pk %}"
+               class="nav-link{% if request.resolver_match.url_name == 'schedule' %} active{% endif %} text-dark">
                 <i class="far fa-calendar-alt"></i> {{ _('Schedule') }}
             </a>
         </li>
 
         <li class="nav-item">
             <a href="{% url 'roster:preview-employee' pk %}"
-               class="nav-link{% if request.resolver_match.url_name == 'preview-employee' %} active{% endif %}">
+               class="nav-link{% if request.resolver_match.url_name == 'preview-employee' %} active{% endif %} text-dark">
                 <i class="far fa-eye"></i> {{ _('Preview') }}
             </a>
         </li>

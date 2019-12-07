@@ -13,20 +13,20 @@ def breadcrumbs():
         'label': _('Roster'),
         'pages': [
             {
-                'label': _('Create Employee'),
-                'url_name': 'add'
-            },
-            {
-                'label': _('Profile'),
-                'url_name': 'edit'
-            },
-            {
                 'label': _('Preview All Schedules'),
                 'url_name': 'preview-all'
             },
             {
                 'label': _('Preview Employee Schedule'),
                 'url_name': 'preview-employee'
+            },
+            {
+                'label': _('Profile'),
+                'url_name': 'profile'
+            },
+            {
+                'label': _('Employee Schedule'),
+                'url_name': 'schedule'
             },
             {
                 'label': _('Search Employees'),

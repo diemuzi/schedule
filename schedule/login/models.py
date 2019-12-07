@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 TIME_ZONE_CHOICES = (
     sorted([(x, x) for x in pytz.all_timezones_set])
 )
-
+from django.contrib.auth.hashers import get_random_string
 
 class UserManager(auth_models.BaseUserManager):
     use_in_migrations = True
@@ -40,7 +40,7 @@ class UserManager(auth_models.BaseUserManager):
         message += "Password: %s\n\n" % password
         message += "After logging in, please change your password.\n\n"
         message += "Thank you,\n"
-        message += "~ Sammie S. Taunton"
+        message += "~ Marina Management"
 
         email_from = settings.DEFAULT_FROM_EMAIL
         recipient_list = [email]
@@ -49,7 +49,7 @@ class UserManager(auth_models.BaseUserManager):
         return user
 
     def create_user(self, email=None, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', False)
+        extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', False)
 
         return self._create_user(email, password, **extra_fields)
@@ -225,7 +225,5 @@ class Account(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         extra_fields.setdefault('first_name', self.first_name)
         extra_fields.setdefault('last_name', self.last_name)
 
-        user = Account.objects.create_user(email=self.email, **extra_fields)
+        Account.objects.create_user(email='%s@marina.gwhcp.dev' % get_random_string(), **extra_fields)
 
-        group = auth_models.Group.objects.get(name='Client')
-        group.user_set.add(user)

@@ -228,4 +228,9 @@ class Roster(models.Model):
     class Meta:
         db_table = 'roster'
 
-        default_permissions = ()
+    def profile(self):
+        return Roster.objects.get(pk=self)
+
+    @staticmethod
+    def search_staff():
+        return Roster.objects.filter(account__is_staff=True, account__is_superuser=False)

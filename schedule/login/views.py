@@ -1,28 +1,47 @@
+from django.contrib import messages
 from django.contrib.admin import forms as admin_forms
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views import generic
 
 from login import forms
-from login import models
-from login.mixin import GaclMixin
 
 
-class Access(GaclMixin, generic.ListView):
-    permission_required = (
-        'login.view_accesslog'
-    )
+class Create(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    template_name = 'login/create.html'
 
-    template_name = 'login/access.html'
+    form_class = forms.FormCreate
 
-    ordering = '-date_from'
+    success_url = reverse_lazy('roster:search')
 
-    paginate_by = 10
+    success_message = _('Employee has been created.')
 
-    def get_queryset(self):
-        return models.AccessLog.objects.filter(account_id=self.request.user.id)
+
+class Delete(LoginRequiredMixin, generic.DeleteView):
+    success_url = reverse_lazy('roster:search')
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+
+        if obj.is_superuser:
+            messages.add_message(request, messages.INFO, _('Administrator cannot be removed.'))
+
+            return redirect(self.success_url)
+        else:
+            messages.success(self.request, _('Employee has been removed.'))
+
+            return super(Delete, self).delete(request, *args, **kwargs)
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(get_user_model(), pk=self.kwargs['pk'], is_staff=True)
 
 
 class Index(SuccessMessageMixin, LoginView):
@@ -31,11 +50,11 @@ class Index(SuccessMessageMixin, LoginView):
     form_class = admin_forms.AuthenticationForm
 
 
-class Create(SuccessMessageMixin, generic.CreateView):
-    template_name = 'login/create.html'
+class Password(LoginRequiredMixin, SuccessMessageMixin, PasswordChangeView):
+    form_class = PasswordChangeForm
 
-    form_class = forms.FormCreate
+    template_name = 'login/password.html'
 
-    success_url = reverse_lazy('login:login')
+    success_url = reverse_lazy('login:password')
 
-    success_message = _('Thank you for registering. Check your email for your login information.')
+    success_message = _('Updated password.')

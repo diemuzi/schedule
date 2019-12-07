@@ -1,6 +1,5 @@
 from django.contrib.auth.views import LogoutView
 from django.urls import path
-from django.urls import re_path
 
 from login import views
 
@@ -9,12 +8,11 @@ app_name = 'login'
 urlpatterns = [
     path('', views.Index.as_view(redirect_authenticated_user=True), name='login'),
 
-    re_path(r'^access'
-            r'(?:/page/(?P<page>[0-9]+))?'
-            r'$',
-            views.Access.as_view(), name='access'),
+    path('create', views.Create.as_view(), name='create'),
 
     path('logout', LogoutView.as_view(), name='logout'),
 
-    path('create', views.Create.as_view(), name='create')
+    path('password', views.Password.as_view(), name='password'),
+
+    path('<int:pk>/delete', views.Delete.as_view(), name='delete')
 ]

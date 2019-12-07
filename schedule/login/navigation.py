@@ -11,5 +11,14 @@ def breadcrumbs():
     return {
         'namespace': 'login',
         'label': _('Login'),
-        'pages': []
+        'pages': [
+            {
+                'label': _('Create Employee'),
+                'url_name': 'create'
+            },
+            {
+                'label': _('Change Password'),
+                'url_name': 'password'
+            }
+        ]
     }

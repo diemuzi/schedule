@@ -8,7 +8,7 @@ class FormCreate(forms.ModelForm):
         model = models.Account
 
         fields = [
-            'email',
+            'facility',
             'first_name',
             'last_name'
         ]

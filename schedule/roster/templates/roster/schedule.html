@@ -14,7 +14,7 @@
 
     {% include 'roster/nav.html' with pk=object.pk %}
 
-    <form action="{% url 'roster:edit' object.pk %}" method="post" novalidate>
+    <form action="{% url 'roster:schedule' object.pk %}" method="post" novalidate>
 
         {% csrf_token %}
 

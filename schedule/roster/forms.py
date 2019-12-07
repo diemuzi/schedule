@@ -1,9 +1,21 @@
 from django import forms
+from django.contrib.auth import get_user_model
 
 from roster import models
 
 
-class FormEdit(forms.ModelForm):
+class FormProfile(forms.ModelForm):
+    class Meta:
+        model = get_user_model()
+
+        fields = [
+            'first_name',
+            'last_name',
+            'facility'
+        ]
+
+
+class FormSchedule(forms.ModelForm):
     class Meta:
         model = models.Roster
 
