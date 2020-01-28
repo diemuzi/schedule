@@ -1,0 +1,11 @@
+{% load widget_tweaks %}
+
+<div class="form-group custom-control custom-switch" id="switch_{{ switch.name }}">
+    {% render_field switch class="custom-control-input" %}
+
+    {{ switch|add_label_class:'custom-control-label'|cut:":" }}
+
+    {% if switch.help_text %}
+        <small class="form-text text-muted help-text">{{ switch.help_text }}</small>
+    {% endif %}
+</div>

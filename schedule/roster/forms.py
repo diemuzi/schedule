@@ -49,3 +49,20 @@ class FormSchedule(forms.ModelForm):
             'start_time_saturday',
             'end_time_saturday'
         ]
+
+        widgets = {
+            'start_time_sunday': forms.NumberInput,
+            'end_time_sunday': forms.NumberInput,
+            'start_time_monday': forms.NumberInput,
+            'end_time_monday': forms.NumberInput,
+            'start_time_tuesday': forms.NumberInput,
+            'end_time_tuesday': forms.NumberInput,
+            'start_time_wednesday': forms.NumberInput,
+            'end_time_wednesday': forms.NumberInput,
+            'start_time_thursday': forms.NumberInput,
+            'end_time_thursday': forms.NumberInput,
+            'start_time_friday': forms.NumberInput,
+            'end_time_friday': forms.NumberInput,
+            'start_time_saturday': forms.NumberInput,
+            'end_time_saturday': forms.NumberInput
+        }

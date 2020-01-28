@@ -16,22 +16,11 @@ module.exports = {
             'popper.js',
             'bootstrap',
             '@fortawesome/fontawesome-free',
-            'blockui-npm',
-            'pwstrength-bootstrap',
-            'datatables.net-bs4',
-            'datatables.net-buttons-bs4',
-            'datatables.net-responsive-bs4',
-            'datatables.net-scroller-bs4',
-            'datatables.net-select-bs4'
+            'blockui-npm'
         ],
         'vendor-css': [
             'bootstrap/dist/css/bootstrap.css',
-            '@fortawesome/fontawesome-free/css/all.css',
-            'datatables.net-bs4/css/dataTables.bootstrap4.css',
-            'datatables.net-buttons-bs4/css/buttons.bootstrap4.css',
-            'datatables.net-responsive-bs4/css/responsive.bootstrap4.css',
-            'datatables.net-scroller-bs4/css/scroller.bootstrap4.css',
-            'datatables.net-select-bs4/css/select.bootstrap4.css'
+            '@fortawesome/fontawesome-free/css/all.css'
         ]
     },
     mode: 'production',
@@ -139,8 +128,7 @@ module.exports = {
     ],
     resolve: {
         alias: {
-            'jquery': 'jquery/src/jquery',
-            'pwstrength-bootstrap': 'pwstrength-bootstrap/dist/pwstrength-bootstrap'
+            'jquery': 'jquery/src/jquery'
         }
     }
 };

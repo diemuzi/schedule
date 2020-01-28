@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.signals import user_logged_out
-from gwhcp.contrib.template.templatetags.template_breadcrumb import nav
+from template.templatetags.template_breadcrumb import nav
 
 from login import navigation
 

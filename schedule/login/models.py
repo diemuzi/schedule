@@ -1,6 +1,7 @@
 import pytz
 from django.conf import settings
 from django.contrib.auth import models as auth_models
+from django.contrib.auth.hashers import get_random_string
 from django.core import validators
 from django.core.mail import send_mail
 from django.db import models
@@ -9,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 TIME_ZONE_CHOICES = (
     sorted([(x, x) for x in pytz.all_timezones_set])
 )
-from django.contrib.auth.hashers import get_random_string
+
 
 class UserManager(auth_models.BaseUserManager):
     use_in_migrations = True
@@ -226,4 +227,3 @@ class Account(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         extra_fields.setdefault('last_name', self.last_name)
 
         Account.objects.create_user(email='%s@marina.gwhcp.dev' % get_random_string(), **extra_fields)
-

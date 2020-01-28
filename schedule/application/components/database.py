@@ -32,5 +32,5 @@ DATABASES = {
 
 # Database Routers
 DATABASE_ROUTERS = [
-    'gwhcp.contrib.database.router.MasterSlave'
+    'database.router.MasterSlave'
 ]

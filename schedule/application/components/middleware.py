@@ -14,7 +14,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # 'django.middleware.cache.FetchFromCacheMiddleware',
-    'gwhcp.contrib.locality.middleware.TimezoneMiddleware',
+    'locality.middleware.TimezoneMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware'
 ]

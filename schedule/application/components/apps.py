@@ -22,9 +22,9 @@ INSTALLED_APPS.extend([
 
 # Base Applications
 INSTALLED_APPS.extend([
-    'gwhcp.contrib.form.apps.FormConfig',
-    'gwhcp.contrib.locality.apps.LocalityConfig',
-    'gwhcp.contrib.template.apps.TemplateConfig'
+    'form.apps.FormConfig',
+    'locality.apps.LocalityConfig',
+    'template.apps.TemplateConfig'
 ])
 
 # Project Applications
