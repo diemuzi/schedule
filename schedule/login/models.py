@@ -225,5 +225,6 @@ class Account(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
 
         extra_fields.setdefault('first_name', self.first_name)
         extra_fields.setdefault('last_name', self.last_name)
+        extra_fields.setdefault('facility', self.facility)
 
         Account.objects.create_user(email='%s@marina.gwhcp.dev' % get_random_string(), **extra_fields)
