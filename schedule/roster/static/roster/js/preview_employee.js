@@ -12,7 +12,7 @@ $(function () {
             }
         });
 
-        total_time_value.text(total_time);
+        total_time_value.text(total_time.toPrecision(4));
     }
 
     totalTime();

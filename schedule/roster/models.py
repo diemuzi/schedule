@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.core import validators
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from model_utils import FieldTracker
@@ -227,6 +228,83 @@ class Roster(models.Model):
 
     class Meta:
         db_table = 'roster'
+
+    def clean_fields(self, exclude=None):
+        super().clean_fields(exclude=exclude)
+
+        error = {}
+
+        is_day = {
+            'sunday': self.is_sunday,
+            'monday': self.is_monday,
+            'tuesday': self.is_tuesday,
+            'wednesday': self.is_wednesday,
+            'thursday': self.is_thursday,
+            'friday': self.is_friday,
+            'saturday': self.is_saturday
+        }
+
+        validation_error = _('Value must be set.')
+
+        for key, value in is_day.items():
+            # Sunday
+            if value is True and key == 'sunday':
+                if self.start_time_sunday is None:
+                    error['start_time_sunday'] = ValidationError(validation_error, code='invalid')
+
+                if self.end_time_sunday is None:
+                    error['end_time_sunday'] = ValidationError(validation_error, code='invalid')
+
+            # Monday
+            if value is True and key == 'monday':
+                if self.start_time_monday is None:
+                    error['start_time_monday'] = ValidationError(validation_error, code='invalid')
+
+                if self.end_time_monday is None:
+                    error['end_time_monday'] = ValidationError(validation_error, code='invalid')
+
+            # Tuesday
+            if value is True and key == 'tuesday':
+                if self.start_time_tuesday is None:
+                    error['start_time_tuesday'] = ValidationError(validation_error, code='invalid')
+
+                if self.end_time_tuesday is None:
+                    error['end_time_tuesday'] = ValidationError(validation_error, code='invalid')
+
+            # Wednesday
+            if value is True and key == 'wednesday':
+                if self.start_time_wednesday is None:
+                    error['start_time_wednesday'] = ValidationError(validation_error, code='invalid')
+
+                if self.end_time_wednesday is None:
+                    error['end_time_wednesday'] = ValidationError(validation_error, code='invalid')
+
+            # Thursday
+            if value is True and key == 'thursday':
+                if self.start_time_thursday is None:
+                    error['start_time_thursday'] = ValidationError(validation_error, code='invalid')
+
+                if self.end_time_thursday is None:
+                    error['end_time_thursday'] = ValidationError(validation_error, code='invalid')
+
+            # Friday
+            if value is True and key == 'friday':
+                if self.start_time_friday is None:
+                    error['start_time_friday'] = ValidationError(validation_error, code='invalid')
+
+                if self.end_time_friday is None:
+                    error['end_time_friday'] = ValidationError(validation_error, code='invalid')
+
+            # Saturday
+            if value is True and key == 'saturday':
+                if self.start_time_saturday is None:
+                    error['start_time_saturday'] = ValidationError(validation_error, code='invalid')
+
+                if self.end_time_saturday is None:
+                    error['end_time_saturday'] = ValidationError(validation_error, code='invalid')
+
+        if error:
+            raise ValidationError(error)
 
     def profile(self):
         return Roster.objects.get(pk=self)
