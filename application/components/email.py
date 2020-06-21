@@ -2,6 +2,8 @@
 Email Settings
 """
 
+import os
+
 # Backend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
@@ -30,9 +32,7 @@ DEFAULT_FROM_EMAIL = 'FROM_EMAIL_ADDRESS'
 # Example; Queue failed to process
 #
 # For more than 1 admin, recommended to use a mailing list address here
-ADMINS = [
-    'ADMIN_EMAIL_ADDRESS'
-]
+ADMINS = os.environ['ADMINS']
 
 #
 # Set the manager email address(es)
@@ -41,6 +41,4 @@ ADMINS = [
 # Example; 404 Errors
 #
 # For more than 1 manager, recommended to use a mailing list address here
-MANAGERS = [
-    'MANAGER_EMAIL_ADDRESS'
-]
+MANAGERS = os.environ['MANAGERS']
