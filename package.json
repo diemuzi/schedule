@@ -1,6 +1,9 @@
 {
   "name": "schedule",
   "version": "1.0.0",
+  "engines": {
+    "node": "^13.1"
+  },
   "homepage": "https://github.com/diemuzi/schedule",
   "private": true,
   "description": "Simple interface for creating work schedules.",
