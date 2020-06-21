@@ -8,7 +8,7 @@ import os
 CACHES = {
     'default': {
         'BACKEND': os.environ['CACHE_BACKEND'],
-        'LOCATION': [os.environ['CACHE_LOCATION']],
+        'LOCATION': os.environ['CACHE_LOCATION'],
         'OPTIONS': {}
     }
 }
