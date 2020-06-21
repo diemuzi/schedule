@@ -58,7 +58,7 @@ module.exports = {
     output: {
         filename: '[name].js',
         chunkFilename: '[name].chunk.js',
-        path: path.resolve(__dirname, 'schedule/static/webpack')
+        path: path.resolve(__dirname, 'static/webpack')
     },
     optimization: {
         minimize: true,
@@ -120,7 +120,7 @@ module.exports = {
         }),
         new RemovePlugin({
             after: {
-                root: path.resolve(__dirname, 'schedule/static/webpack'),
+                root: path.resolve(__dirname, 'static/webpack'),
                 include: ['vendor-css.js']
             }
         }),

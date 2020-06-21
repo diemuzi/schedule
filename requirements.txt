@@ -2,6 +2,8 @@
 django
 django-cleanup
 django-compressor
+django-debug-toolbar
+django-extensions
 django-filter
 django-ipware
 django-model-utils
@@ -10,14 +12,21 @@ django-widget-tweaks
 
 # Other Modules
 argon2-cffi
+coverage
+markdown
 pillow
 psycopg2
+python-coveralls
 python-dateutil
 python-memcached
+pytest
 pytz
 pyyaml
 requests
+setuptools
+twine
 validators
+wheel
 xlsxwriter
 
 # Temporary Fixes
