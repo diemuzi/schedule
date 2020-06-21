@@ -28,6 +28,7 @@ setuptools
 twine
 validators
 wheel
+whitenoise
 xlsxwriter
 
 # Temporary Fixes
