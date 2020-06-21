@@ -2,6 +2,8 @@
 Development Override Settings
 """
 
+import os
+
 from application.components.apps import INSTALLED_APPS
 from application.components.middleware import MIDDLEWARE
 
@@ -9,7 +11,7 @@ from application.components.middleware import MIDDLEWARE
 DEBUG = True
 
 # Allowed Hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ['ALLOWED_HOSTS']]
 
 # Site ID
 SITE_ID = 1

@@ -8,13 +8,13 @@ import os
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Hostname
-EMAIL_HOST = 'HOSTNAME'
+EMAIL_HOST = os.environ['EMAIL_HOST']
 
 # Username
-EMAIL_HOST_USER = 'USERNAME'
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 
 # Password
-EMAIL_HOST_PASSWORD = 'PASSWORD'
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 
 # Port
 EMAIL_PORT = 587
@@ -32,7 +32,7 @@ DEFAULT_FROM_EMAIL = 'FROM_EMAIL_ADDRESS'
 # Example; Queue failed to process
 #
 # For more than 1 admin, recommended to use a mailing list address here
-ADMINS = os.environ['ADMINS']
+ADMINS = [os.environ['ADMINS']]
 
 #
 # Set the manager email address(es)
@@ -41,4 +41,4 @@ ADMINS = os.environ['ADMINS']
 # Example; 404 Errors
 #
 # For more than 1 manager, recommended to use a mailing list address here
-MANAGERS = os.environ['MANAGERS']
+MANAGERS = [os.environ['MANAGERS']]

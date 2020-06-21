@@ -2,11 +2,13 @@
 Cache
 """
 
+import os
+
 # Cache Backends
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': [],
+        'BACKEND': os.environ['CACHE_BACKEND'],
+        'LOCATION': [os.environ['CACHE_LOCATION']],
         'OPTIONS': {}
     }
 }
