@@ -32,7 +32,9 @@ DEFAULT_FROM_EMAIL = 'FROM_EMAIL_ADDRESS'
 # Example; Queue failed to process
 #
 # For more than 1 admin, recommended to use a mailing list address here
-ADMINS = [os.environ['ADMINS']]
+ADMINS = [
+    ('Sammie S. Taunton', 'diemuzi@gmail.com')
+]
 
 #
 # Set the manager email address(es)
@@ -41,4 +43,6 @@ ADMINS = [os.environ['ADMINS']]
 # Example; 404 Errors
 #
 # For more than 1 manager, recommended to use a mailing list address here
-MANAGERS = [os.environ['MANAGERS']]
+MANAGERS = [
+    ('Sammie S. Taunton', 'diemuzi@gmail.com')
+]
