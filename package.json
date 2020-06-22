@@ -18,7 +18,7 @@
   "license": "GNU",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack && python manage.py collectstatic --no-input && python manage.py compress",
+    "dev": "webpack && python schedule/manage.py collectstatic --no-input && python schedule/manage.py compress --force",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

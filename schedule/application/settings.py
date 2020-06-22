@@ -14,6 +14,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ENV = os.environ.get('DJANGO_ENV') or 'production'
 
 include(
+    # Optional (application/local.py)
+    optional('local.py'),
+
     # Components
     'components/secret.py',
     'components/apps.py',
@@ -31,8 +34,5 @@ include(
     'components/log.py',
 
     # Environments (development / production / testing)
-    'environments/%s.py' % ENV,
-
-    # Optional (application/local.py)
-    optional('local.py')
+    'environments/%s.py' % ENV
 )

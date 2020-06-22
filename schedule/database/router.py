@@ -3,20 +3,20 @@ import random
 from django.conf import settings
 
 
-class MasterSlave:
+class MasterRouter:
     """
     Handles all models associated with the respected database.
     """
 
     def db_for_read(self, model, **hints):
         """
-        Attempts to read models go to 'default_slave' or 'jabber_slave' database.
+        Attempts to read models go to 'default_read' or 'jabber_read' database.
         """
 
         db_choice = []
 
         for item in settings.DATABASES:
-            if item.startswith('default_slave'):
+            if item.startswith('default_read'):
                 db_choice.append(item)
 
         if len(db_choice) > 0:

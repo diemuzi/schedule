@@ -4,6 +4,8 @@ Development Override Settings
 
 import os
 
+from django.conf import settings
+
 from application.components.apps import INSTALLED_APPS
 from application.components.middleware import MIDDLEWARE
 
@@ -11,7 +13,10 @@ from application.components.middleware import MIDDLEWARE
 DEBUG = True
 
 # Allowed Hosts
-ALLOWED_HOSTS = [os.environ['ALLOWED_HOSTS']]
+try:
+    ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS']
+except KeyError:
+    ALLOWED_HOSTS = settings.ALLOWED_HOSTS
 
 # Site ID
 SITE_ID = 1
